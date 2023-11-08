@@ -1,0 +1,101 @@
+body {
+    background-color: #d8f0fd;
+    margin: 0%;
+}
+
+.maos {
+    
+    width: 100%;
+    height: 400px;
+    background-image:url(imgs/hands_def.jpg);
+    background-size: cover;
+    background-position-y: 60%;
+    margin: 0%;
+    
+}
+
+ul.cabecalho {
+    padding: 10px;
+    background-color: #0f70b7;
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    margin: 0%;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+li.cabecalho {
+    display: inline-block;
+    padding: 0.5% 3%;
+    align-items: center;
+}
+
+a.cabecalho {
+    display: flex;
+    text-decoration: none;
+    color: aliceblue;
+    align-items: center;
+}
+
+a.cabecalho:hover {
+    opacity: 0.7;
+}
+
+li.doar {
+    margin: 0.5% 5%;
+    right: 5px;
+    position: absolute;  
+}
+
+a.doar {
+    padding: 25% 60%;
+    text-decoration: none;
+    border: 2px solid white;
+    border-radius: 40% 0%;
+    color: aliceblue;
+}
+
+a.doar:hover {
+    background-color: #0092fa;
+    color: aliceblue;
+}
+
+.whats {
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    bottom: 20px;
+    right: 20px;
+}
+
+li.redes {
+    display: inline-block;
+    margin: 0% 0.5%;
+}
+
+h1 {
+    text-shadow: 3px -1px #000000;
+    color: antiquewhite;
+    position: absolute;
+    width: 100%;
+    top: 30%;
+    text-align: center;
+    overflow:hidden;
+}
+
+.imagens {
+    display: inline-block;
+    max-width: 80%;
+    margin: 2% 3%;
+    display: flex;
+    overflow-x: auto;
+}
+
+.imagens img {
+    border: 2px solid gold;
+    margin-right: 15px;
+}
+
