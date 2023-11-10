@@ -36,19 +36,20 @@ a.cabecalho {
     text-decoration: none;
     color: aliceblue;
     align-items: center;
+    text-shadow: 0.6px -0.6px black;
 }
 
 a.cabecalho:hover {
     opacity: 0.7;
 }
 
-li.doar {
+li.Bdoar {
     margin: 0.5% 5%;
     right: 5px;
     position: absolute;  
 }
 
-a.doar {
+a.Bdoar {
     padding: 25% 60%;
     text-decoration: none;
     border: 2px solid white;
@@ -56,7 +57,7 @@ a.doar {
     color: aliceblue;
 }
 
-a.doar:hover {
+a.Bdoar:hover {
     background-color: #0092fa;
     color: aliceblue;
 }
@@ -92,38 +93,32 @@ li.redes {
     align-items: center;
     position: relative;
     justify-content: center;
-    
 }
 
 .imagens img {
     border: 2px solid #eece2e;
-    margin-right: 15px;
+    margin: 0 7px;
 }
 
 .imagens h1 {
     text-shadow: 3px -1px #eece2e;
     font-size: 50px;
     color: #0f70b7;
-    position: relative;
-    width: 100%;
-    top: 0%;
-    justify-content: center;
-    display: flex;
 }
 
 .faq {
     width: 100%;
+    display: inline-block;
+    position: relative;
+    justify-content: center;
 }
 
 .faqTitle {
     position: relative;
     display: inline-block;
     width: 49.5%;
-    background-color: #a0ccee;
     margin-top: 5%;
-    border: 1px solid black;
-    height: 200px;
-
+    height: 200px;    
 }
 
 .faqTitle h1 {
@@ -134,22 +129,23 @@ li.redes {
     text-indent: -15%;
     height: 100%;
     margin: 0 0 0 5%;
+    display: flex;
     color: #0f70b7;
     text-align: center;
+    align-items: center;
     position: absolute;
 }
 
 .faqTitle p {
-    display: block;
-    width: 40%;
+    display: flex;
+    width: 85%;
     height: 100%;   
     position: absolute;
     color: #0f70b7;
     font-size: 20px;
     margin: 0 0 0 0;
     text-shadow: 0.5px -0.5px black;
-    text-align: center;
-    justify-content: center;
+    align-items: center;
 }
 
 .perguntas {
@@ -160,37 +156,101 @@ li.redes {
 }
 
 .perguntas li{
+    margin: 0.5%;
+    padding: 2%;
+    display: flex;
     color: #003d69;
     font-size: 200%;
+    border: 2px solid #003d69;
+    justify-content: space-between;
+    background-color:rgba(38, 148, 233, 0.295);
 }
 
+.perguntas a {
+    padding: 0 1.5% 0.3% 1.5%;
+    color: white;
+    border: 2px solid #003d69;
+    border-radius: 10%;
+    background-color: #003d69;
+}
 
+.perguntas a:hover {
+    background-color: #0f70b7;
+    cursor: pointer;
+}
 
-
-
-
-
-
-
-.doar{
-    position: relative;
-    height: 90%;
+.contato {
     display: inline-block;
-    width: 40%;
-    justify-content: center;
-    border: 1px solid black;
+    position: relative;
+    width: 100%;
+    height: 45%;
+}
+
+.contato h1 {
+    text-shadow: 3px -1px #eece2e;
+    font-size: 50px;
+    color: #0f70b7;
+    text-align: center;
+}
+
+.contato li {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    color: rgb(0, 0, 0);
+    font-size: 20px;
+    text-shadow: 0.5px -0.5px #0f70b7;
+    list-style-type: none;
+    text-align: center;
+    margin: 5% 0 0 0;
+    
+    
     
 }
 
-.doar h2{
+.contato a{
+    display: inline-block;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    margin: 0 1%;
+    text-shadow: 0.5px -0.5px #0f70b7;
+}
+
+.contato img {
+    width: 10px;
+    height: 10px;
+}
+
+
+
+
+
+/* Pagina Doar*/
+
+.doar{
     position: relative;
+    height: 100%;
+    display: flex;
+    width: 49%;
+    justify-content: center;
+    flex-direction: column;
+    
+}
+
+.doar h2 {
+    display: block;
+    position: relative;
+    width: 100%;
+    margin: 5%;
     left: 20%;
-    margin: 20px;
+    color: #0f70b7;
+    text-shadow: 1px -1px white;
     
 }
 
 .doar img {
     position: relative;
-    
-
+    border: 2px solid #0f70b7;
+    border-radius: 10%;
+    right: 5%;
 }
