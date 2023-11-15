@@ -6,7 +6,7 @@ body {
 .imgP { 
     width: 100%;
     height: 90vh;
-    background-image:url(imgs/hands_def.jpg);
+    background-image:url(assets/imgs/hands_def.jpg);
     background-size: cover;
     background-position-y: 60%;
     margin: 0%;
