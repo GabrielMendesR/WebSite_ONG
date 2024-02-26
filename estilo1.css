@@ -1,6 +1,16 @@
 body {
     background-color: #d8f0fd;
     margin: 0%;
+    font-family: "Roboto"
+}
+
+.content-page {
+    width: 100%;
+    padding: 32px;
+}
+
+div {
+    box-sizing: border-box;
 }
 
 .imgP { 
@@ -153,6 +163,11 @@ li.redes {
     list-style-type: none;
     width: 95%;
     
+}
+
+.justify-center {
+    display: flex;
+    justify-content: center;
 }
 
 .perguntas li{
