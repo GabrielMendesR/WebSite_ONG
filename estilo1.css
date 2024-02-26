@@ -9,17 +9,27 @@ body {
     padding: 32px;
 }
 
+.w-100 {
+    width: 100%;
+}
+
+.pd-32 {
+    padding: 32px;
+}
+
 div {
     box-sizing: border-box;
 }
 
 .imgP { 
     width: 100%;
-    height: 90vh;
-    background-image:url(assets/imgs/hands_def.jpg);
-    background-size: cover;
-    background-position-y: 60%;
+    height: 100vh;
     margin: 0%;
+}
+
+.imgP .img-fundo {
+    filter: brightness(70%);
+    width: 100%;
 }
 
 ul.cabecalho {
@@ -32,7 +42,7 @@ ul.cabecalho {
     margin: 0%;
     position: sticky;
     top: 0;
-    z-index: 1;
+    z-index: 2;
 }
 
 li.cabecalho {
@@ -86,7 +96,7 @@ li.redes {
 }
 
 .imgP h1 {
-    text-shadow: 3px -1px #000000;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     color: antiquewhite;
     font-size: 60px;
     position: absolute;
@@ -103,6 +113,36 @@ li.redes {
     align-items: center;
     position: relative;
     justify-content: center;
+}
+
+.ong-list {
+    max-width: 100%;
+    display: flex;
+    overflow-x: auto;
+    align-items: center;
+    position: relative;
+    justify-content: center;
+}
+
+.ong-cards {
+    display: flex;
+    gap: 24px;
+    height: 400px;
+    overflow-x: auto;
+}
+
+.ong-cards .card {
+    height: 100%;
+    min-width: 300px;
+    border: #003d69 2px solid;
+    padding: 12px;
+    display: flex;
+    justify-content: center;
+}
+
+.ong-cards .card img {
+    height: 100%;
+    width: 100%;
 }
 
 .imagens img {
