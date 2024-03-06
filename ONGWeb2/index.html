@@ -9,6 +9,7 @@
     <link rel="shortcut icon" href="assets/imgs/icon_ONGWeb.png" type="image/x-icon">
     <link rel="stylesheet" href="dist/css/style.css">
     <script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>
+    <script src="index.js"></script>
 </head>
 
 <body class="is-boxed has-animations">
@@ -47,13 +48,13 @@
                     </div>
                 </div>
             </section>
-
+            <button onclick="listOngs()">Duplicate</button>
             <section class="features section text-center">
                 <div id="ongs_apoiadas" class="container">
                     <div class="features-inner section-inner has-top-divider">
                         <h2 class="section-title mt-0">ONGs Apoiadas</h2>
-                        <div class="features-wrap">
-                            <div class="feature is-revealing">
+                        <div id="ongs-container" class="features-wrap">
+                            <div id="ong-card" (click)="" class="feature is-revealing">
                                 <h4 class="feature-title h3-mobile">Nome ONG1</h4>
                                 <div class="feature-inner">
                                     <div class="feature-icon">

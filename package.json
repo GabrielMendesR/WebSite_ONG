@@ -1,0 +1,23 @@
+{
+  "name": "website_ong",
+  "version": "1.0.0",
+  "description": "Em um mundo cada vez mais digital, a importância das organizações não governamentais (ONGs) na promoção de mudanças positivas é inegável. No entanto, muitas dessas organizações enfrentam desafios na comunicação de suas causas e no alcance de um público mais amplo. É aí que entra o nosso projeto, ONGWeb.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GabrielMendesR/WebSite_ONG.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GabrielMendesR/WebSite_ONG/issues"
+  },
+  "homepage": "https://github.com/GabrielMendesR/WebSite_ONG#readme",
+  "dependencies": {
+    "express": "^4.18.3",
+    "http": "^0.0.1-security"
+  }
+}
