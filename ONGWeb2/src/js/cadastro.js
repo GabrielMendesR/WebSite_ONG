@@ -7,7 +7,9 @@ document.getElementById('cadastroForm').addEventListener('submit', function (eve
     nomeImagens.addEventListener('change', function () {
         $fileName.textContent = this.value;
     });
+});
 
+function cadastrar() {
     const nome = document.getElementById('nome').value;
     const email = document.getElementById('email').value;
     const senha = document.getElementById('senha').value;
@@ -19,6 +21,8 @@ document.getElementById('cadastroForm').addEventListener('submit', function (eve
     const descricao = document.getElementById('descricao').value;
     const imagens = document.getElementById('imagem').files;
 
-    // Exemplo de como utilizar os valores
-    console.log(nome, email, senha, confirmarSenha, telefone, endereco, cnpj, website, descricao, imagens);
-});
+    if (senha != confirmarSenha) {
+        alert("Confirmação de Senha Inválida")
+    }
+    
+}
