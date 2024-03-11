@@ -2,6 +2,52 @@ document.getElementById('cadastroForm').addEventListener('submit', function (eve
     event.preventDefault();
 });
 
+function formatarTelefone(input) {
+    const digitos = input.value.replace(/\D/g, '');
+
+    let telefoneFormatado = '';
+    if (digitos.length > 0) {
+        telefoneFormatado = '(' + digitos.substring(0, 2);
+        if (digitos.length > 2) {
+            telefoneFormatado += ') ' + digitos.substring(2, 6);
+        }
+        if (digitos.length > 6) {
+            telefoneFormatado += '-' + digitos.substring(6, 11);
+        }
+    }
+    input.value = telefoneFormatado;
+}
+
+function formatarCNPJ(input) {
+    const digitos = input.value.replace(/\D/g, '');
+
+    let cnpjFormatado = '';
+    if (digitos.length > 0) {
+        cnpjFormatado = digitos.substring(0, 2);
+        if (digitos.length > 2) {
+            cnpjFormatado += '.' + digitos.substring(2, 5);
+        }
+        if (digitos.length > 5) {
+            cnpjFormatado += '.' + digitos.substring(5, 8);
+        }
+        if (digitos.length > 8) {
+            cnpjFormatado += '/' + digitos.substring(8, 12);
+        }
+        if (digitos.length > 12) {
+            cnpjFormatado += '-' + digitos.substring(12, 14);
+        }
+    }
+    
+    if (event.keyCode === 8) {
+        cnpjFormatado -= cnpjFormatado[-1]
+    }
+
+    input.value = cnpjFormatado;
+
+}
+
+
+
 function handleFiles(files) {
     const previewImagens = document.getElementById('previewImagens');
     previewImagens.innerHTML = '';
