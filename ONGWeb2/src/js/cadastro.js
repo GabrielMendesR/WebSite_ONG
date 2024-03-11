@@ -15,7 +15,7 @@ function cadastrar() {
     const senha = document.getElementById('senha').value;
     const confirmarSenha = document.getElementById('confirmarSenha').value;
     const telefone = document.getElementById('telefone').value;
-    const endereco = document.getElementById('endereco').value;
+    const endereco = document.getElementById('rua').value;
     const cnpj = document.getElementById('cnpj').value;
     const website = document.getElementById('website').value;
     const descricao = document.getElementById('descricao').value;
@@ -24,5 +24,7 @@ function cadastrar() {
     if (senha != confirmarSenha) {
         alert("Confirmação de Senha Inválida")
     }
+
+    console.log("1312312")
     
 }
