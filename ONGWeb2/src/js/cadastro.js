@@ -37,13 +37,7 @@ function formatarCNPJ(input) {
             cnpjFormatado += '-' + digitos.substring(12, 14);
         }
     }
-    
-    if (event.keyCode === 8) {
-        cnpjFormatado -= cnpjFormatado[-1]
-    }
-
     input.value = cnpjFormatado;
-
 }
 
 
