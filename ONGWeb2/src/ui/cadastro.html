@@ -33,35 +33,34 @@
                 </div>
                 <div class="col">
                     <label for="telefone">Telefone:</label>
-                    <input type="tel" id="telefone" oninput="this.value = this.value.replace(/[^0-9]/g, '');">
+                    <input type="tel" id="telefone" oninput="this.value = this.value.replace(/[^0-9]/g, '');" required>
                 </div>
                 <div class="col">
                     <label for="website">Link do Website:</label>
                     <input type="url" id="website">
                 </div>
                 <div class="col">
-                    <label for="cnpj">CNPJ:</label>
-                    <input type="number" id="cnpj" oninput="this.value = this.value.replace(/[^0-9]/g, '');" required>
-                </div>
-                <div class="col">
                     <label for="estado">Estado:</label>
-                    <input type="text" id="estado">
+                    <input type="text" id="estado" required>
                 </div>
                 <div class="col">
                     <label for="cidade">Cidade:</label>
-                    <input type="text" id="cidade">
+                    <input type="text" id="cidade" required>
                 </div>
-
                 <div class="endereco">
                     <div style="margin-right: 4px;">
                         <label for="rua">Rua:</label>
-                        <input type="text" id="rua">
+                        <input type="text" id="rua" required>
                     </div>
                     <div>
                         <label for="numero">N°:</label>
                         <input type="text" id="numero" oninput="this.value = this.value.replace(/[^0-9]/g, '');"
                             style="max-width: 50px;">
                     </div>
+                </div>
+                <div class="col">
+                    <label for="cnpj">CNPJ:</label>
+                    <input type="number" id="cnpj" oninput="this.value = this.value.replace(/[^0-9]/g, '');" required>
                 </div>
             </div>
             <div class="row">
@@ -70,15 +69,22 @@
                     <textarea id="descricao" required></textarea>
                 </div>
             </div>
-            <div class="row">
-                <div class="col">
-                    <label for="imagem">Upload de Imagens:</label>
-                    <input type="file" id="imagem" value="" multiple>
-                    <span id="nome-arquivos"></span>
+            <div class="campoImg">
+                <h2>Upload de Imagens</h2>
+                <div id="uploadArea" class="upload-area" ondragover="handleDragOver(event)" ondrop="handleDrop(event)">
+                    <h4>Arraste e Solte Suas Imagens Aqui<br>
+                    <br>ou</h4><br>
+                    <label for="imagemInput" class="custom-file-upload">
+                        Selecione as imagens
+                    </label>
+                    <input type="file" id="imagemInput" multiple style="display: none;"
+                        onchange="handleFiles(this.files)">
                 </div>
+                <div id="previewImagens" class="preview-images"></div>
             </div>
-            <button onclick="cadastrar()">Cadastrar</button>
         </form>
+        <button onclick="cadastrar()">Cadastrar</button>
+        <button onclick="teste()">Teste</button>
     </div>
 
     <script src="../js/cadastro.js"></script>

@@ -2,6 +2,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    background-color: #0063cea1;
 }
 
 .container {
@@ -17,7 +18,7 @@ h2 {
 .titulo {
     font-family: 'Arial Black', sans-serif;
     font-size: 36px;
-    color: #3498db;
+    color: #ecf8ff;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.315);
 }
 
@@ -29,7 +30,7 @@ form {
 .row {
     display: grid;
     gap: 10px;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
 
 .col {
@@ -65,6 +66,10 @@ textarea {
     border: 1px solid #0000008a;
 }
 
+textarea {
+    padding-bottom: 50px;
+}
+
 button {
     padding: 10px 20px;
     background-color: #007bff;
@@ -88,6 +93,37 @@ input[type='file'] {
     color: green;
     font-weight: bold;
 }
+
+.campoImg {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding-bottom: 80px;
+    width: 100%;
+    color: #ecf8ff;
+}
+
+.upload-area {
+    border: 2px dashed #ccc;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.custom-file-upload {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.preview-images img {
+    max-width: 200px;
+    max-height: 200px;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
 
 button:hover {
     background-color: #0056b3;
