@@ -1,3 +1,6 @@
+import { axios } from 'axios';
+//import axios from 'axios/dist/browser/axios.cjs'; // browser
+
 document.getElementById('cadastroForm').addEventListener('submit', function (event) {
     event.preventDefault();
 });
@@ -69,21 +72,36 @@ function handleDrop(event) {
 }
 
 function cadastrar() {
-    const nome = document.getElementById('nome').value;
-    const email = document.getElementById('email').value;
-    const senha = document.getElementById('senha').value;
-    const confirmarSenha = document.getElementById('confirmarSenha').value;
-    const telefone = document.getElementById('telefone').value;
-    const endereco = document.getElementById('rua').value;
-    const cnpj = document.getElementById('cnpj').value;
-    const website = document.getElementById('website').value;
-    const descricao = document.getElementById('descricao').value;
-    const imagens = document.getElementById('imagemInput').files;
+    console.log('asdad')
+    // axios.post('http://localhost:3000/api/ong', {})
+    // .then(response => {
+    //   console.log('Response:', response.data);
+    // })
+    // .catch(error => {
+    //   console.error('Error:', error);
+    // });
+return
 
-    if (senha !== confirmarSenha) {
-        alert("Confirmação de Senha Inválida");
-        return false;
-    } else {
-        return true;
+    const obj = {
+        nome: document.getElementById('nome').value,
+        email: document.getElementById('email').value,
+        senha: document.getElementById('senha').value,
+        confirmarSenha: document.getElementById('confirmarSenha').value,
+        telefone: document.getElementById('telefone').value,
+        endereco: document.getElementById('rua').value,
+        cnpj: document.getElementById('cnpj').value,
+        website: document.getElementById('website').value,
+        descricao: document.getElementById('descricao').value,
+        imagens: document.getElementById('imagemInput').files,
     }
+
+    if (obj.senha !== obj.confirmarSenha) { return alert("Confirmação de Senha Inválida"); } 
+
+    // axios.post('http://localhost:3000/api/ong', obj)
+    // .then(response => {
+    //   console.log('Response:', response.data);
+    // })
+    // .catch(error => {
+    //   console.error('Error:', error);
+    // });
 }
