@@ -1,5 +1,3 @@
-
-
 window.addEventListener('scroll', function() {
 
   var div = document.getElementById('ong-card');
@@ -44,4 +42,4 @@ function listOngs() {
     
     // Append the clone to the container
     container.appendChild(clone);
-  }
+}

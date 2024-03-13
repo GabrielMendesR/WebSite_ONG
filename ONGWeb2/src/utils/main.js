@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const createOng = require('./database');
+const database = require('./database');
 const app = express();
 
 app.use(cors())
@@ -10,7 +10,12 @@ app.get('/', (req, res) => {
 });
  
 app.post('/api/ong', (req, res) => {
-  createOng(req)
+  database.createOng(req)
+  res.json({ message: `ONG cadastrada com sucesso` })
+});
+
+app.get('/api/ong', (req, res) => {
+  database.getAllOngs(req)
   res.json({ message: `ONG cadastrada com sucesso` })
 });
 

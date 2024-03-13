@@ -1,5 +1,10 @@
 const mysql = require('mysql');
 
+module.exports = {
+    createOng,
+    getAllOngs
+};
+
 const pool = mysql.createPool({
     connectionLimit: 10, 
     host: 'localhost',
@@ -7,7 +12,6 @@ const pool = mysql.createPool({
     password: '1234',
     database: 'ong_web'
 });
-
 
 const createdatabaseQuery = `CREATE DATABASE IF NOT EXISTS ong_web;`
 
@@ -33,13 +37,15 @@ pool.query(createTableQuery, (error, results, fields) => {
     console.log('Query results:', results);
 });
 
-pool.query('SELECT * FROM ong_list', (error, results, fields) => {
-    if (error) {
-        console.error('Error executing query:', error);
-        return;
-    }
-    console.log('Query results:', results);
-});
+function getAllOngs() {
+    pool.query('SELECT * FROM ong_list', (error, results, fields) => {
+        if (error) {
+            console.error('Error executing query:', error);
+            return;
+        }
+        console.log('Query results:', results);
+    });
+}
 
 function createOng(ongObj) {
     pool.query(`INSERT INTO ong_list VALUES (${ongObj.nome}, ${ongObj.endereco})`, (error, results, fields) => {
