@@ -1,4 +1,4 @@
-/*const mysql = require('mysql');
+const mysql = require('mysql');
 
 const pool = mysql.createPool({
     connectionLimit: 10, 
@@ -49,4 +49,4 @@ function createOng(ongObj) {
         }
         console.log('Query results:', results);
     });
-}*/
+}

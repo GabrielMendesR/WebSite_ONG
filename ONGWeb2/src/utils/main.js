@@ -1,14 +1,17 @@
 const express = require('express');
-//const createOng = require('./database');
+const cors = require('cors');
+const createOng = require('./database');
 const app = express();
+
+app.use(cors())
 
 app.get('/', (req, res) => {
     res.send('Aplicação rodando!\n');
 });
-
+ 
 app.post('/api/ong', (req, res) => {
-  //  createOng(req)
-    res.json({ message: `ONG cadastrada com sucesso` })
+  createOng(req)
+  res.json({ message: `ONG cadastrada com sucesso` })
 });
 
 // Start the server

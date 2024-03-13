@@ -1,6 +1,3 @@
-import { axios } from 'axios';
-//import axios from 'axios/dist/browser/axios.cjs'; // browser
-
 document.getElementById('cadastroForm').addEventListener('submit', function (event) {
     event.preventDefault();
 });
@@ -71,16 +68,8 @@ function handleDrop(event) {
     handleFiles(files);
 }
 
+
 function cadastrar() {
-    console.log('asdad')
-    // axios.post('http://localhost:3000/api/ong', {})
-    // .then(response => {
-    //   console.log('Response:', response.data);
-    // })
-    // .catch(error => {
-    //   console.error('Error:', error);
-    // });
-return
 
     const obj = {
         nome: document.getElementById('nome').value,
@@ -97,11 +86,11 @@ return
 
     if (obj.senha !== obj.confirmarSenha) { return alert("Confirmação de Senha Inválida"); } 
 
-    // axios.post('http://localhost:3000/api/ong', obj)
-    // .then(response => {
-    //   console.log('Response:', response.data);
-    // })
-    // .catch(error => {
-    //   console.error('Error:', error);
-    // });
+    axios.post('http://localhost:3000/api/ong', obj)
+    .then(response => {
+      console.log('Response:', response.data);
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
 }
