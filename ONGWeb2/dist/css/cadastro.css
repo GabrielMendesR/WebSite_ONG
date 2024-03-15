@@ -15,6 +15,16 @@ h2 {
     text-align: center;
 }
 
+h4 {
+    padding: 0px;
+    margin: 0px;
+}
+
+h6 {
+    padding: 0px;
+    margin: 0px;
+}
+
 .cabecalho {
     width: 100%;
     display:flex;
@@ -115,13 +125,13 @@ input[type='file'] {
     border: 2px dashed #ccc;
     padding: 20px;
     text-align: center;
-    cursor: pointer;
+    
 }
 
 .custom-file-upload {
     background-color: #007bff;
     color: #fff;
-    padding: 10px 20px;
+    padding: 10px 30px;
     border-radius: 5px;
     cursor: pointer;
 }

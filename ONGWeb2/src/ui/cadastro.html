@@ -76,8 +76,8 @@
                 <h2>Upload de Imagens</h2>
                 <div id="uploadArea" class="upload-area" ondragover="handleDragOver(event)" ondrop="handleDrop(event)">
                     <h4>Arraste e Solte Suas Imagens Aqui<br>
-                        <br>ou
-                    </h4><br>
+                        <h6>(A Primeira Imagem Será a Imagem Principal)</h6>
+                        <br>ou</h4><br><br>
                     <label for="imagemInput" class="custom-file-upload">
                         Selecione as imagens
                     </label>
@@ -85,9 +85,9 @@
                         onchange="handleFiles(this.files)">
                 </div>
                 <div id="previewImagens" class="preview-images"></div>
-            </div> 
+            </div>
             <button onclick="cadastrar()">Cadastrar</button>
-        </form> 
+        </form>
     </div>
 
     <script src="./../../../node_modules/axios/dist/axios.min.js"></script>
