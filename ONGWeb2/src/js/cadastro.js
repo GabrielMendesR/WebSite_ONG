@@ -69,7 +69,54 @@ function handleDrop(event) {
 }
 
 
-function cadastrar() {
+function getOngImagesTest() {
+    axios.get('http://localhost:3000/api/ong/images')
+    .then(response => {
+      console.log('Response:', response.data);
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+}
+
+function uploadImageTest() {
+
+    const formData = new FormData();
+    const images = document.getElementById('imagemInput').files;
+    const token = localStorage.getItem('token');
+    
+    formData.append('image', images[0]);
+    axios.post('http://localhost:3000/api/ong/images', formData, {
+        headers: {
+            'Content-Type': 'multipart/form-data',
+            'Authorization': `Bearer ${token}`
+        }
+    })
+    .then(response => {
+      console.log('Response:', response.data);
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+}
+
+function getOngsTest() {
+    const token = localStorage.getItem('token');
+    axios.get('http://localhost:3000/api/ong', {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        }
+    })
+    .then(response => {
+      console.log('Response:', response.data);
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+}
+
+async function cadastrar() {
 
     const obj = {
         nome: document.getElementById('nome').value,
@@ -77,11 +124,18 @@ function cadastrar() {
         senha: document.getElementById('senha').value,
         confirmarSenha: document.getElementById('confirmarSenha').value,
         telefone: document.getElementById('telefone').value,
-        endereco: document.getElementById('rua').value,
+        rua: document.getElementById('rua').value,
         cnpj: document.getElementById('cnpj').value,
         website: document.getElementById('website').value,
         descricao: document.getElementById('descricao').value,
-        imagens: document.getElementById('imagemInput').files,
+        estado: document.getElementById('estado').value,
+        numero: document.getElementById('numero').value,
+        cidade: document.getElementById('cidade').value,
+    }
+
+    for (const file of document.getElementById('imagemInput').files) {
+        const base64String = await imageToBase64(file);
+        obj.imagens.push(base64String);
     }
 
     if (obj.senha !== obj.confirmarSenha) { return alert("Confirmação de Senha Inválida"); } 
