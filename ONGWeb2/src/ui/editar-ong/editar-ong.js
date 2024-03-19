@@ -111,8 +111,10 @@ async function update() {
     }
 
     if (obj.senha !== obj.confirmarSenha) { return alert("Confirmação de Senha Inválida"); } 
-
-    axios.put('http://localhost:3000/api/ong/update', obj, { 
+    const token = localStorage.getItem('token');
+    
+    axios.put('http://localhost:3000/api/ong/update', {
+        body: obj, 
         headers: {
             'Authorization': `Bearer ${token}`
         }
