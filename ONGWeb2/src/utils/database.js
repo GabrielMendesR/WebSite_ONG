@@ -6,7 +6,8 @@ module.exports = {
     getAllOngs,
     checkLogin,
     includeOngImages,
-    getAllImages
+    getAllImages,
+    getOngById
 };
 
 const pool = mysql.createPool({
@@ -92,15 +93,24 @@ function getAllImages() {
     }})
 }
 
+function getOngById(ong_id) {
+    return new Promise((resolve, reject) => {    
+        pool.query(`SELECT * FROM ong_list WHERE id = ${ong_id}`, (error, results, fields) => {
+            if (error) reject(error);
+            resolve(results);
+        })
+    })
+}
+
 
 function getAllOngs() {
-    return pool.query('SELECT * FROM ong_list', (error, results, fields) => {
-        if (error) {
-            console.error('Error executing query:', error);
-            return;
-        }
-        console.log('Query results:', results);
-    });
+    return new Promise((resolve, reject) => {     
+        pool.query('SELECT * FROM ong_list', (error, results, fields) => {
+            if (error) reject(error);
+            resolve(results);
+        });
+    })   
+
 }
  
 function checkLogin(credentials) {

@@ -102,6 +102,7 @@ function uploadImageTest() {
 
 function getOngsTest() {
     const token = localStorage.getItem('token');
+    if(!token) return console.error("Nenhum token fornecido!")
     axios.get('http://localhost:3000/api/ong', {
         headers: {
           'Content-Type': 'application/json',

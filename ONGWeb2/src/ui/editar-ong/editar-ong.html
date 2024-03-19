@@ -17,16 +17,6 @@
         <form id="cadastroForm" enctype="multipart/form-data">
             <div class="row">
                 <div class="col">
-                    <label for="senha">Senha:</label>
-                    <input type="password" id="senha" required>
-                </div>
-                <div class="col">
-                    <label for="confirmarSenha">Confirmar Senha:</label>
-                    <input type="password" id="confirmarSenha" required>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
                     <label for="email">Email:</label>
                     <input type="email" id="email" required>
                 </div>
@@ -64,6 +54,16 @@
                     <textarea id="descricao" required></textarea>
                 </div>
             </div>
+            <div class="row">
+                <div class="col">
+                    <label for="senha">Senha:</label>
+                    <input type="password" id="senha" required>
+                </div>
+                <div class="col">
+                    <label for="confirmarSenha">Confirmar Senha:</label>
+                    <input type="password" id="confirmarSenha" required>
+                </div>
+            </div>
             <div class="campoImg">
                 <h2>Upload de Imagens</h2>
                 <div id="uploadArea" class="upload-area" ondragover="handleDragOver(event)" ondrop="handleDrop(event)">
@@ -86,8 +86,8 @@
         
     </div>
 
-    <script src="./../../../node_modules/axios/dist/axios.min.js"></script>
-    <script src="../js/cadastro.js"></script>
+    <script src="./../../../../node_modules/axios/dist/axios.min.js"></script>
+    <script src="editar-ong.js"></script>
 </body>
 
 </html>

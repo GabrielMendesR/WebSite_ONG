@@ -69,26 +69,32 @@ app.post('/api/login', async (req, res) => {
 
 function getTokenParams(headers) {
   const token = headers.authorization.split(' ')[1];
-  const decoded = jwt.verify(token, SECRET);
+  const decoded = jwt.verify(token, SECRET, function(err, decoded) {
+    if (err) return null
+    return decoded
+  });
   return decoded
 }
 
-app.get('/api/ong', (req, res) => {
-  const token = req.headers.authorization.split(' ')[1];
-  if (!token) {
+app.get('/api/ong', async (req, res) => {
+  const decoded = getTokenParams(req.headers);
+  if (!decoded) {
     return res.status(401).json({ message: 'Usuário não autenticado!' });
   }
-  const decoded = getTokenParams(token);
-
-  jwt.verify(token, SECRET, function(err, decoded) {
-    if (err) return res.status(401).json({ auth: false, message: 'Usuário não autenticado!' });
-    req.userId = decoded.uid;
-  });
-  database.getAllOngs(req)
-  res.json({ message: res.body, userId: req.userId  })
+  const ongs = await database.getAllOngs(req)
+  res.json({ message: ongs, userId: decoded.userId  })
 });
 
-// Start the server
+app.get('/api/ong/:id', async (req, res) => {
+  const decoded = getTokenParams(req.headers);
+  const id = req.params.id;
+  if(decoded.uid != id) {
+    return res.status(403).json({ message: 'Você não tem permissão para ver os detalhes desta ONG!' });
+  }
+  const ong = await database.getOngById(id)
+  res.json({ message: ong })
+});
+
 const port = 3000;
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
