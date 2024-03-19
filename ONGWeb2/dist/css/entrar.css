@@ -10,6 +10,13 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    position: relative;
+}
+
+.cabecalho {
+    position: relative;
+    top: -170px; 
+    left: -60px; 
 }
 
 #login-form {
@@ -21,6 +28,7 @@ body {
     width: 100%;
     text-align: center;
     animation: fadeIn 0.5s ease;
+    margin-top: 60px;
 }
 
 .input-container {

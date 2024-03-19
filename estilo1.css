@@ -1,0 +1,256 @@
+body {
+    background-color: #d8f0fd;
+    margin: 0%;
+}
+
+.imgP { 
+    width: 100%;
+    height: 90vh;
+    background-image:url(imgs/hands_def.jpg);
+    background-size: cover;
+    background-position-y: 60%;
+    margin: 0%;
+}
+
+ul.cabecalho {
+    padding: 10px;
+    background-color: #0f70b7;
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    margin: 0%;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+li.cabecalho {
+    display: inline-block;
+    padding: 0.5% 3%;
+    align-items: center;
+}
+
+a.cabecalho {
+    display: flex;
+    text-decoration: none;
+    color: aliceblue;
+    align-items: center;
+    text-shadow: 0.6px -0.6px black;
+}
+
+a.cabecalho:hover {
+    opacity: 0.7;
+}
+
+li.Bdoar {
+    margin: 0.5% 5%;
+    right: 5px;
+    position: absolute;  
+}
+
+a.Bdoar {
+    padding: 25% 60%;
+    text-decoration: none;
+    border: 2px solid white;
+    border-radius: 40% 0%;
+    color: aliceblue;
+}
+
+a.Bdoar:hover {
+    background-color: #0092fa;
+    color: aliceblue;
+}
+
+.whats {
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    bottom: 20px;
+    right: 20px;
+}
+
+li.redes {
+    display: inline-block;
+    margin: 0% 0.5%;
+}
+
+.imgP h1 {
+    text-shadow: 3px -1px #000000;
+    color: antiquewhite;
+    font-size: 60px;
+    position: absolute;
+    width: 100%;
+    top: 40%;
+    justify-content: center;
+    display: flex;
+}
+
+.imagens {
+    max-width: 100%;
+    display: flex;
+    overflow-x: auto;
+    align-items: center;
+    position: relative;
+    justify-content: center;
+}
+
+.imagens img {
+    border: 2px solid #eece2e;
+    margin: 0 7px;
+}
+
+.imagens h1 {
+    text-shadow: 3px -1px #eece2e;
+    font-size: 50px;
+    color: #0f70b7;
+}
+
+.faq {
+    width: 100%;
+    display: inline-block;
+    position: relative;
+    justify-content: center;
+}
+
+.faqTitle {
+    position: relative;
+    display: inline-block;
+    width: 49.5%;
+    margin-top: 5%;
+    height: 200px;    
+}
+
+.faqTitle h1 {
+    text-shadow: 3px -1px #eece2e;
+    font-size: 80px;
+    font-weight: 1000;
+    line-height: .75;
+    text-indent: -15%;
+    height: 100%;
+    margin: 0 0 0 5%;
+    display: flex;
+    color: #0f70b7;
+    text-align: center;
+    align-items: center;
+    position: absolute;
+}
+
+.faqTitle p {
+    display: flex;
+    width: 85%;
+    height: 100%;   
+    position: absolute;
+    color: #0f70b7;
+    font-size: 20px;
+    margin: 0 0 0 0;
+    text-shadow: 0.5px -0.5px black;
+    align-items: center;
+}
+
+.perguntas {
+    display: block;
+    list-style-type: none;
+    width: 95%;
+    
+}
+
+.perguntas li{
+    margin: 0.5%;
+    padding: 2%;
+    display: flex;
+    color: #003d69;
+    font-size: 200%;
+    border: 2px solid #003d69;
+    justify-content: space-between;
+    background-color:rgba(38, 148, 233, 0.295);
+}
+
+.perguntas a {
+    padding: 0 1.5% 0.3% 1.5%;
+    color: white;
+    border: 2px solid #003d69;
+    border-radius: 10%;
+    background-color: #003d69;
+}
+
+.perguntas a:hover {
+    background-color: #0f70b7;
+    cursor: pointer;
+}
+
+.contato {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    height: 45%;
+}
+
+.contato h1 {
+    text-shadow: 3px -1px #eece2e;
+    font-size: 50px;
+    color: #0f70b7;
+    text-align: center;
+}
+
+.contato li {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    color: rgb(0, 0, 0);
+    font-size: 20px;
+    text-shadow: 0.5px -0.5px #0f70b7;
+    list-style-type: none;
+    text-align: center;
+    margin: 5% 0 0 0;
+    
+    
+    
+}
+
+.contato a{
+    display: inline-block;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    margin: 0 1%;
+    text-shadow: 0.5px -0.5px #0f70b7;
+}
+
+.contato img {
+    width: 10px;
+    height: 10px;
+}
+
+
+
+
+
+/* Pagina Doar*/
+
+.doar{
+    position: relative;
+    height: 100%;
+    display: flex;
+    width: 49%;
+    justify-content: center;
+    flex-direction: column;
+    
+}
+
+.doar h2 {
+    display: block;
+    position: relative;
+    width: 100%;
+    margin: 5%;
+    left: 20%;
+    color: #0f70b7;
+    text-shadow: 1px -1px white;
+    
+}
+
+.doar img {
+    position: relative;
+    border: 2px solid #0f70b7;
+    border-radius: 10%;
+    right: 5%;
+}
