@@ -85,6 +85,18 @@ app.get('/api/ong', async (req, res) => {
   res.json({ message: ongs, userId: decoded.userId  })
 });
 
+app.put('/api/ong/update', async (req, res) => {
+  const decoded = getTokenParams(req.headers);
+  if (!decoded) {
+    return res.status(401).json({ message: 'Usuário não autenticado!' });
+  }
+  // if(decoded.uid != id) {
+  //   return res.status(403).json({ message: 'Você não tem permissão para editar esta ONG!' });
+  // }
+  const result = await database.updateOng(decoded.uid, req)
+  res.json({ message: result, userId: decoded.userId  })
+});
+
 app.get('/api/ong/:id', async (req, res) => {
   const decoded = getTokenParams(req.headers);
   const id = req.params.id;

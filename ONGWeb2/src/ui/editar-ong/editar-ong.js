@@ -69,16 +69,6 @@ function handleDrop(event) {
 }
 
 
-function getOngImagesTest() {
-    axios.get('http://localhost:3000/api/ong/images')
-    .then(response => {
-      console.log('Response:', response.data);
-    })
-    .catch(error => {
-      console.error('Error:', error);
-    });
-}
-
 function uploadImageTest() {
 
     const formData = new FormData();
@@ -100,33 +90,14 @@ function uploadImageTest() {
     });
 }
 
-function getOngsTest() {
-    const token = localStorage.getItem('token');
-    if(!token) return console.error("Nenhum token fornecido!")
-    axios.get('http://localhost:3000/api/ong', {
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
-        }
-    })
-    .then(response => {
-      console.log('Response:', response.data);
-    })
-    .catch(error => {
-      console.error('Error:', error);
-    });
-}
-
-async function cadastrar() {
+async function update() {
 
     const obj = {
-        nome: document.getElementById('nome').value,
         email: document.getElementById('email').value,
         senha: document.getElementById('senha').value,
         confirmarSenha: document.getElementById('confirmarSenha').value,
         telefone: document.getElementById('telefone').value,
         rua: document.getElementById('rua').value,
-        cnpj: document.getElementById('cnpj').value,
         website: document.getElementById('website').value,
         descricao: document.getElementById('descricao').value,
         estado: document.getElementById('estado').value,
@@ -141,7 +112,11 @@ async function cadastrar() {
 
     if (obj.senha !== obj.confirmarSenha) { return alert("Confirmação de Senha Inválida"); } 
 
-    axios.post('http://localhost:3000/api/ong', obj)
+    axios.put('http://localhost:3000/api/ong/update', obj, { 
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    })
     .then(response => {
       console.log('Response:', response.data);
     })

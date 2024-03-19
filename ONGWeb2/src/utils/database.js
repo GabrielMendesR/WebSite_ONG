@@ -7,7 +7,8 @@ module.exports = {
     checkLogin,
     includeOngImages,
     getAllImages,
-    getOngById
+    getOngById,
+    updateOng
 };
 
 const pool = mysql.createPool({
@@ -60,6 +61,28 @@ function createDatabase() {
             createTables();
         });
     });
+}
+
+function updateOng(id_ong, ong) {
+    //ong.descricao adicionar a tabela
+    const sql = `UPDATE ong_list SET 
+        phone_number = ${ong.telefone}
+        email = ${ong.email}
+        password = ${ong.senha}
+        code = ${ong.code}
+        url = ${ong.website}
+        address_state = ${ong.estado}
+        address_street = ${ong.rua}
+        address_number = ${ong.numero}
+        address_city = ${ong.cidade}
+    WHERE id = ${id_ong};`
+    return new Promise((resolve, reject) => { 
+        pool.query(sql, (error, results, fields) => {
+            if (error) 
+                reject(error);
+            resolve(results);
+        });
+    })
 }
 
 function createTables() {
