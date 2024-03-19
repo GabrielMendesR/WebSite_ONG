@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar dados da ONG</title>
+    <link rel="stylesheet" href="editar-ong.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="cabecalho">
+            <a href="../ui/index.html"><img src="../../assets/imgs/voltar.png" alt="Voltar" width="40px"></a>
+            <h2 class="titulo">Editar dados da ONG</h2>
+        </div>
+        <form id="cadastroForm" enctype="multipart/form-data">
+            <div class="row">
+                <div class="col">
+                    <label for="senha">Senha:</label>
+                    <input type="password" id="senha" required>
+                </div>
+                <div class="col">
+                    <label for="confirmarSenha">Confirmar Senha:</label>
+                    <input type="password" id="confirmarSenha" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="col">
+                    <label for="telefone">Telefone:</label>
+                    <input type="tel" id="telefone" oninput="formatarTelefone(this)" required>
+                </div>
+                <div class="col">
+                    <label for="website">Link do Website:</label>
+                    <input type="url" id="website">
+                </div>
+                <div class="col">
+                    <label for="estado">Estado:</label>
+                    <input type="text" id="estado" required>
+                </div>
+                <div class="col">
+                    <label for="cidade">Cidade:</label>
+                    <input type="text" id="cidade" required>
+                </div>
+                <div class="endereco">
+                    <div style="margin-right: 4px;">
+                        <label for="rua">Rua:</label>
+                        <input type="text" id="rua" required>
+                    </div>
+                    <div>
+                        <label for="numero">N°:</label>
+                        <input type="text" id="numero" oninput="this.value = this.value.replace(/[^0-9]/g, '');"
+                            style="max-width: 50px;">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label for="descricao">Descrição da ONG:</label>
+                    <textarea id="descricao" required></textarea>
+                </div>
+            </div>
+            <div class="campoImg">
+                <h2>Upload de Imagens</h2>
+                <div id="uploadArea" class="upload-area" ondragover="handleDragOver(event)" ondrop="handleDrop(event)">
+                    <h4>Arraste e Solte Suas Imagens Aqui<br>
+                        <h6>(A Primeira Imagem Será a Imagem Principal)</h6>
+                        <br>ou</h4><br><br>
+                    <label for="imagemInput" class="custom-file-upload">
+                        Selecione as imagens
+                    </label>
+                    <input type="file" id="imagemInput" multiple style="display: none;"
+                        onchange="handleFiles(this.files)">
+                </div>
+                <div id="previewImagens" class="preview-images"></div>
+            </div>
+        </form>
+        <button onclick="cadastrar()">Cadastrar</button>
+        <button onclick="getOngsTest()">get ongs</button>
+        <button onclick="uploadImageTest()">upload image</button>
+        <button onclick="getOngImagesTest()">get images</button>
+        
+    </div>
+
+    <script src="./../../../node_modules/axios/dist/axios.min.js"></script>
+    <script src="../js/cadastro.js"></script>
+</body>
+
+</html>

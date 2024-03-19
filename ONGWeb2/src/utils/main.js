@@ -35,12 +35,14 @@ router.post('/api/ong/images', upload.single('image'), (req, res) => {
   res.send('File uploaded successfully!', "id:", decoded.uid, "path:", filePath);
 });
 
-app.get('/api/ong/images', (req, res) => {
-  //const imageName = req.params.imageName;
-  const imagePath = path.join(imagesDirectory, '20240308_015019.jpg');
-
-  // Send the image file as a response
-  res.sendFile(imagePath);
+app.get('/api/ong/images', async (req, res) => {
+  const images = await database.getAllImages()
+  const imagesPaths = images.map(image => ({
+    id_ong: image.id_ong,
+    path: path.join(imagesDirectory, image.image_path)}
+  )) 
+  res.json(imagesPaths)
+  //res.sendFile(imagePath); envia a imagem inteira como response
 });
 
 app.get('/', (req, res) => {
@@ -76,7 +78,7 @@ app.get('/api/ong', (req, res) => {
   if (!token) {
     return res.status(401).json({ message: 'Usuário não autenticado!' });
   }
-  const decoded = jwt.verify(token, SECRET);
+  const decoded = getTokenParams(token);
 
   jwt.verify(token, SECRET, function(err, decoded) {
     if (err) return res.status(401).json({ auth: false, message: 'Usuário não autenticado!' });

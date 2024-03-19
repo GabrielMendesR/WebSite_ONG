@@ -1,3 +1,13 @@
+window.onload = function() {
+  fetch('../ui/header/header.html')
+      .then(response => response.text())
+      .then(html => {
+          document.getElementById('header').innerHTML = html;
+      });
+};
+
+
+
 window.addEventListener('scroll', function() {
 
   var div = document.getElementById('ong-card');
