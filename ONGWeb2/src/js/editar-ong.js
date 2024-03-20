@@ -68,6 +68,21 @@ function handleDrop(event) {
     handleFiles(files);
 }
 
+function deleteOng() {
+    const token = localStorage.getItem('token');
+    axios.delete('http://localhost:3000/api/ong/', { 
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    })
+    .then(response => {
+      console.log('Response:', response.data);
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+}
+
 
 function uploadImageTest() {
 

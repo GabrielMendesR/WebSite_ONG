@@ -1,12 +1,13 @@
+var ong_list = []
+
 window.onload = function() {
   fetch('../ui/header/header.html')
       .then(response => response.text())
       .then(html => {
           document.getElementById('header').innerHTML = html;
-      });
+  });
+  getAllOngs()
 };
-
-
 
 window.addEventListener('scroll', function() {
 
@@ -53,3 +54,15 @@ function listOngs() {
     // Append the clone to the container
     container.appendChild(clone);
 }
+
+function getAllOngs() {
+  axios.get('http://localhost:3000/api/ong/')
+  .then(response => {
+    console.log('Response:', response.data);
+    ong_list = response.data
+  })
+  .catch(error => {
+    console.error('Error:', error);
+  });
+}
+
