@@ -12,6 +12,8 @@ module.exports = {
     deleteOng,
 };
 
+//ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password'
+
 const pool = mysql.createPool({
     connectionLimit: 10, 
     host: 'localhost',
