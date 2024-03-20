@@ -13,6 +13,10 @@
         <div class="cabecalho">
             <a href="../ui/index.html"><img src="../../assets/imgs/voltar.png" alt="Voltar" width="40px"></a>
             <h2 class="titulo">Alterar Informações</h2>
+            <a href="#">
+                <img src="../../assets/imgs/lixeira.png" alt="Deletar ONG" height="50px" width="50px">
+                <h4>Deletar ONG</h4>
+            </a>
         </div>
         <form id="cadastroForm" enctype="multipart/form-data">
             <div class="row">
@@ -65,7 +69,8 @@
                 <div id="uploadArea" class="upload-area" ondragover="handleDragOver(event)" ondrop="handleDrop(event)">
                     <h4>Arraste e Solte Suas Imagens Aqui<br>
                         <h6>(A Primeira Imagem Será a Imagem Principal)</h6>
-                        <br>ou</h4><br><br>
+                        <br>ou
+                    </h4><br><br>
                     <label for="imagemInput" class="custom-file-upload">
                         Selecione as imagens
                     </label>
@@ -75,11 +80,12 @@
                 <div id="previewImagens" class="preview-images"></div>
             </div>
         </form>
+
         <button onclick="cadastrar()">Cadastrar</button>
         <button onclick="getOngsTest()">get ongs</button>
         <button onclick="uploadImageTest()">upload image</button>
         <button onclick="getOngImagesTest()">get images</button>
-        
+
     </div>
 
     <script src="./../../../node_modules/axios/dist/axios.min.js"></script>
