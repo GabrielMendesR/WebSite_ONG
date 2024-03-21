@@ -15,7 +15,7 @@ const pool = mysql.createPool({
     connectionLimit: 10, 
     host: 'localhost',
     user: 'root',
-    password: 'root',
+    password: '1234',
     database: 'ong_web' //comentar essa linha na criação do database
 });
 
