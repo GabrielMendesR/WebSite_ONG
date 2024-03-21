@@ -10,7 +10,7 @@ const path = require('path');
 
 app.use(cors({ origin: true, credentials: true }), express.json())
 
-const imagesDirectory = path.resolve(__dirname, '../../../uploads'); //pasta das imagens
+const imagesDirectory = path.resolve(__dirname, '../../../uploads/'); //pasta das imagens
 app.use('/uploads', express.static(imagesDirectory)); //permite acessar pelo navegador, ex: http://localhost:3000/uploads/20240308_015019.jpg
 
 app.use('/', router);
@@ -39,8 +39,8 @@ app.get('/api/ong/images', async (req, res) => {
   const images = await database.getAllImages()
   const imagesPaths = images.map(image => ({
     id_ong: image.id_ong,
-    path: path.join(imagesDirectory, image.image_path)}
-  )) 
+    path: path.join(imagesDirectory, image.image_path)
+  })) 
   res.json(imagesPaths)
   //res.sendFile(imagePath); envia a imagem inteira como response
 });
@@ -49,11 +49,6 @@ app.get('/', (req, res) => {
     res.send('Aplicação rodando!\n');
 });
  
-app.post('/api/ong', (req, res) => {
-  database.createOng(req.body)
-  res.json({ message: `ONG cadastrada com sucesso` })
-});
-
 app.post('/api/login', async (req, res) => {
   const login = await database.checkLogin(req.body)
   console.log("login:",login)
@@ -76,8 +71,24 @@ function getTokenParams(headers) {
   return decoded
 }
 
+app.post('/api/ong', upload.single('image'), (req, res) => {
+  const filePath = req.file.path.replace(/\\/g, '/');
+  const normalizedFilePath = path.normalize(filePath);
+
+  database.createOng({...req.body, filePath})
+  res.json({ message: `ONG cadastrada com sucesso` })
+});
+
+
 app.get('/api/ong', async (req, res) => {
   const ongs = await database.getAllOngs(req)
+  //console.log(ongs)
+  const baseUrl = `${req.protocol}://${req.hostname}${req.baseUrl}:${port}`;
+  console.log("req.baseUrl:",req)
+  await ongs.forEach(ong => {
+    //ong.main_image_url = path.join(my_api_url, ong.main_image_url)
+    ong.main_image_url = `${baseUrl}/${ong.main_image_url}`
+  })
   res.json({ data: ongs })
 });
 

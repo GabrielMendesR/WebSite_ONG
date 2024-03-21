@@ -19,8 +19,9 @@ const pool = mysql.createPool({
     host: 'localhost',
     user: 'root',
     password: '1234',
-    database: 'ong_web' //comentar essa linha na criação do database
+    //database: 'ong_web' //comentar essa linha na criação do database
 });
+
 
 const createDatabaseQuery = `CREATE DATABASE IF NOT EXISTS ong_web;`
 
@@ -30,9 +31,11 @@ const createTableQuery = `CREATE TABLE IF NOT EXISTS ong_list (
     phone_number varchar(255),
     email varchar(255),
     password varchar(255),
+    description varchar(255),
 
     code varchar(255),
     url varchar(255),
+    main_image_url varchar(255),
     
     address_state varchar(255),
     address_street varchar(255),
@@ -54,7 +57,6 @@ function createDatabase() {
             return;
         }
         console.log('Database created successfully');
-      
         pool.query('USE ong_web;', (error) => {
             if (error) {
                 console.error('Error selecting database:', error);
@@ -64,6 +66,7 @@ function createDatabase() {
             createTables();
         });
     });
+    pool.config.connectionConfig.database = 'ong_web'
 }
 
 function updateOng(id_ong, ong) {
@@ -175,6 +178,8 @@ function createOng(ongObj) {
             password,
             code,
             url,
+            main_image_url,
+            description,
             address_state,
             address_street,
             address_number,
@@ -186,6 +191,8 @@ function createOng(ongObj) {
             '${ongObj.senha}',
             '${ongObj.cnpj}',
             '${ongObj.website}',
+            '${ongObj.filePath}',
+            '${ongObj.descricao}',
             '${ongObj.estado}',
             '${ongObj.rua}', 
             '${ongObj.numero}',
@@ -214,6 +221,8 @@ function includeOngImages(ongId, images) {
             id_ong
         ) VALUES ('${images}', ${ongId});
     `
+    console.log(query)
+    return
     pool.query(query, (error, results, fields) => {
         if (error) {
             console.error('Error executing query:', error);

@@ -9,70 +9,31 @@ window.onload = function() {
   getAllOngs()
 };
 
-window.addEventListener('scroll', function() {
 
-  var div = document.getElementById('ong-card');
+function listOngs() {
 
-  if (isElementInViewport(div)) {
-
-      div.addEventListener('click', function() {
-        
-        var url = div.getAttribute('data-url');
-        if (url) {
-            window.location.href = url;
-        }  
-      
-      });
-
-      //div.style.display = 'block';
-
-      // Remove the scroll listener to prevent multiple listeners
-      window.removeEventListener('scroll', arguments.callee);
-  }
-});
-
-function isElementInViewport(el) {
-  var rect = el.getBoundingClientRect();
-  return (
-      rect.top >= 0 &&
-      rect.left >= 0 &&
-      rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-      rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-  );
-}
-
-function listOngs(ongs) {
-
-  // Get the container div element
   const container = document.getElementById('ongs-container');
 
-  ong_list.forEach(item => {
+  ong_list.forEach(ong => {
 
-    const originalElement = document.getElementById('ong-card');
-    const nomeOng = document.getElementById('nome_ong');
-    // Create a new div element
-    console.log("original:",originalElement)
 
-    console.log("original:",originalElement)
     const div = document.createElement('div');
-    nomeOng.textContent = item.name
-    // Set the text content of the div to the current item
-    div.textContent = item.name;
 
-    // Append the div to the container
-    container.appendChild(originalElement);
+    // Set div content      is-revealing
+    div.innerHTML = `
+      <div class="feature">
+        <h4 class="feature-title h3-mobile">${ong.name}</h4>
+        <div class="feature-inner">
+            <div class="feature-icon">
+              <img class="ong-icon" src="${ong.main_image_url}" alt="Imagem Ong">
+            </div>
+          <p class="text-sm">${ong.description}</p>
+          <a href="${ong.url}" target="_blank">Website</a>
+        </div>
+      </div>
+    `;
+    container.appendChild(div);
   });
-
-    //var container = document.getElementById('ongs-container');
-    
-    // Get the original element
-    var originalElement = document.getElementById('ong-card');
-    
-    // Clone the original element
-    var clone = originalElement.cloneNode(true);
-    
-    // Append the clone to the container
-    container.appendChild(clone);
 }
 
 function getAllOngs() {
@@ -80,7 +41,7 @@ function getAllOngs() {
   .then(response => {
     console.log('Response:', response.data);
     ong_list = response.data.data
-    listOngs(response.data)
+    listOngs()
   })
   .catch(error => {
     console.error('Error:', error);

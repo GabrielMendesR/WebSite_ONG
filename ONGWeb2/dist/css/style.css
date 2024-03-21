@@ -1424,12 +1424,13 @@ label {
     position: relative;
     height: 100%;
     background: #fff;
-    padding: 40px 24px
+    padding: 40px 24px;
+    box-shadow: 0 16px 48px #E3E7EB;
 }
 
 .feature-inner::before {
     content: '';
-    position: absolute;
+    
     top: 0;
     right: 0;
     bottom: 0;
@@ -1445,8 +1446,16 @@ label {
 }
 
 .feature-icon {
+    height: 200px;
+    width: 200px;
     display: flex;
     justify-content: center
+}
+
+.ong-icon {
+    width: 100%; /* Ensure the image takes up the entire space of the square container */
+    height: 100%;
+    object-fit: cover; /* Scale the image while preserving its aspect ratio */
 }
 
 @media (min-width: 641px) {

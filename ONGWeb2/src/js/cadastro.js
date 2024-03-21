@@ -86,6 +86,8 @@ function uploadImageTest() {
     const token = localStorage.getItem('token');
     
     formData.append('image', images[0]);
+
+
     axios.post('http://localhost:3000/api/ong/images', formData, {
         headers: {
             'Content-Type': 'multipart/form-data',
@@ -118,29 +120,29 @@ function getOngsTest() {
 
 async function cadastrar() {
 
-    const obj = {
-        nome: document.getElementById('nome').value,
-        email: document.getElementById('email').value,
-        senha: document.getElementById('senha').value,
-        confirmarSenha: document.getElementById('confirmarSenha').value,
-        telefone: document.getElementById('telefone').value,
-        rua: document.getElementById('rua').value,
-        cnpj: document.getElementById('cnpj').value,
-        website: document.getElementById('website').value,
-        descricao: document.getElementById('descricao').value,
-        estado: document.getElementById('estado').value,
-        numero: document.getElementById('numero').value,
-        cidade: document.getElementById('cidade').value,
-    }
+    const formData = new FormData()
 
-    for (const file of document.getElementById('imagemInput').files) {
-        const base64String = await imageToBase64(file);
-        obj.imagens.push(base64String);
-    }
+    formData.append('nome', document.getElementById('nome').value)
+    formData.append('email', document.getElementById('email').value)
+    formData.append('senha', document.getElementById('senha').value)
+    formData.append('confirmarSenha', document.getElementById('confirmarSenha').value)
+    formData.append('telefone', document.getElementById('telefone').value)
+    formData.append('rua', document.getElementById('rua').value)
+    formData.append('cnpj', document.getElementById('cnpj').value)
+    formData.append('website', document.getElementById('website').value)
+    formData.append('descricao', document.getElementById('descricao').value)
+    formData.append('estado', document.getElementById('estado').value)
+    formData.append('numero', document.getElementById('numero').value)
+    formData.append('cidade', document.getElementById('cidade').value)
+    formData.append('image', document.getElementById('imagemInput').files[0])
 
-    if (obj.senha !== obj.confirmarSenha) { return alert("Confirmação de Senha Inválida"); } 
+    //if (obj.senha !== obj.confirmarSenha) { return alert("Confirmação de Senha Inválida"); } 
 
-    axios.post('http://localhost:3000/api/ong', obj)
+    axios.post('http://localhost:3000/api/ong', formData, {
+        headers: {
+            'Content-Type': 'multipart/form-data',
+        }
+    })
     .then(response => {
       console.log('Response:', response.data);
     })
