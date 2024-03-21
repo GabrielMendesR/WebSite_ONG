@@ -1,13 +1,26 @@
 var ong_list = []
 
 window.onload = function() {
-  // fetch('../ui/header/header.html')
-  //     .then(response => response.text())
-  //     .then(html => {
-  //         document.getElementById('header').innerHTML = html;
-  // });
+  const token = localStorage.getItem('token');
+  if(token) {
+    document.getElementById('login-button').style.display = 'none';
+    document.getElementById('register-button').textContent = 'Editar Minha ONG';
+    document.getElementById('register-button').href = 'editar-ong.html';
+
+    const li = document.createElement('li');
+    li.innerHTML = `
+        <a id="login-button" onclick="logout()">Sair</a>
+      `
+    document.getElementById('header-fields').appendChild(li)
+  }
   getAllOngs()
+
 };
+
+function logout() {
+  localStorage.removeItem('token')
+  location.reload() 
+}
 
 
 function listOngs() {

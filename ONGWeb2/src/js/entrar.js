@@ -22,6 +22,7 @@ function login(credentials){
   .then(response => {
     console.log('Response:', response.data);
     localStorage.setItem('token', response.data.token);
+    window.location.href = "/ONGWeb2/src/ui/index.html";
   })
   .catch(error => {
     console.error('Error:', error);

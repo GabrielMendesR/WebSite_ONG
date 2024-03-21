@@ -96,7 +96,7 @@ app.put('/api/ong/update', async (req, res) => {
   // if(decoded.uid != id) {
   //   return res.status(403).json({ message: 'Você não tem permissão para editar esta ONG!' });
   // }
-  const result = await database.updateOng(decoded.uid, req)
+  const result = await database.updateOng(decoded.uid, req.body)
   res.json({ message: result, userId: decoded.userId  })
 });
 
