@@ -8,8 +8,11 @@ module.exports = {
     includeOngImages,
     getAllImages,
     getOngById,
-    updateOng
+    updateOng,
+    deleteOng,
 };
+
+//ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password'
 
 const pool = mysql.createPool({
     connectionLimit: 10, 
@@ -76,6 +79,17 @@ function updateOng(id_ong, ong) {
         address_number = '${ong.numero}'
         address_city = '${ong.cidade}'
     WHERE id = ${id_ong};`
+    return new Promise((resolve, reject) => { 
+        pool.query(sql, (error, results, fields) => {
+            if (error) 
+                reject(error);
+            resolve(results);
+        });
+    })
+}
+
+function deleteOng(id_ong) {
+    const sql = `DELETE FROM ong_list WHERE id = ${id_ong};`
     return new Promise((resolve, reject) => { 
         pool.query(sql, (error, results, fields) => {
             if (error) 

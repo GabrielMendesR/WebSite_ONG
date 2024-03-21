@@ -1414,6 +1414,7 @@ label {
 
 .feature {
     padding: 12px;
+    margin-bottom: 25px;
     width: 276px;
     max-width: 276px;
     flex-grow: 1

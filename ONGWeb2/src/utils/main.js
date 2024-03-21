@@ -77,12 +77,8 @@ function getTokenParams(headers) {
 }
 
 app.get('/api/ong', async (req, res) => {
-  const decoded = getTokenParams(req.headers);
-  if (!decoded) {
-    return res.status(401).json({ message: 'Usuário não autenticado!' });
-  }
   const ongs = await database.getAllOngs(req)
-  res.json({ message: ongs, userId: decoded.userId  })
+  res.json({ data: ongs })
 });
 
 app.put('/api/ong/update', async (req, res) => {
@@ -96,6 +92,16 @@ app.put('/api/ong/update', async (req, res) => {
   const result = await database.updateOng(decoded.uid, req)
   res.json({ message: result, userId: decoded.userId  })
 });
+
+app.delete('/api/ong/', async (req, res) => {
+  const decoded = getTokenParams(req.headers);
+  if (!decoded) {
+    return res.status(401).json({ message: 'Usuário não autenticado!' });
+  }
+  const result = await database.deleteOng(decoded.uid, req)
+  res.json({ message: result, userId: decoded.userId  })
+});
+
 
 app.get('/api/ong/:id', async (req, res) => {
   const decoded = getTokenParams(req.headers);

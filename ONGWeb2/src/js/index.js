@@ -1,12 +1,13 @@
+var ong_list = []
+
 window.onload = function() {
   fetch('../ui/header/header.html')
       .then(response => response.text())
       .then(html => {
           document.getElementById('header').innerHTML = html;
-      });
+  });
+  getAllOngs()
 };
-
-
 
 window.addEventListener('scroll', function() {
 
@@ -40,9 +41,29 @@ function isElementInViewport(el) {
   );
 }
 
-function listOngs() {
-    
-    var container = document.getElementById('ongs-container');
+function listOngs(ongs) {
+
+  // Get the container div element
+  const container = document.getElementById('ongs-container');
+
+  ong_list.forEach(item => {
+
+    const originalElement = document.getElementById('ong-card');
+    const nomeOng = document.getElementById('nome_ong');
+    // Create a new div element
+    console.log("original:",originalElement)
+
+    console.log("original:",originalElement)
+    const div = document.createElement('div');
+    nomeOng.textContent = item.name
+    // Set the text content of the div to the current item
+    div.textContent = item.name;
+
+    // Append the div to the container
+    container.appendChild(originalElement);
+  });
+
+    //var container = document.getElementById('ongs-container');
     
     // Get the original element
     var originalElement = document.getElementById('ong-card');
@@ -53,3 +74,16 @@ function listOngs() {
     // Append the clone to the container
     container.appendChild(clone);
 }
+
+function getAllOngs() {
+  axios.get('http://localhost:3000/api/ong/')
+  .then(response => {
+    console.log('Response:', response.data);
+    ong_list = response.data.data
+    listOngs(response.data)
+  })
+  .catch(error => {
+    console.error('Error:', error);
+  });
+}
+

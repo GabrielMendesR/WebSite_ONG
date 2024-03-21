@@ -19,7 +19,7 @@
                 <div class="site-header-inner">
                     <div class="brand header-brand">
                         <h1 class="m-0">
-                            <a href="#">
+                            <a href="http://ongweb.social">
                                 <img src="../../assets/imgs/icon_ONGWeb.png" alt="ONGWebLogo" width="48" height="48">
                             </a>
                         </h1>
@@ -53,6 +53,7 @@
                     </div>
                 </div>
             </section>
+            <div id="teste"></div>
             <button onclick="listOngs()">Duplicate</button>
             <section class="features section text-center">
                 <div id="ongs_apoiadas" class="container">
@@ -60,15 +61,10 @@
                         <h2 class="section-title mt-0">ONGs Apoiadas</h2>
                         <div id="ongs-container" class="features-wrap">
                             <div id="ong-card"  data-url="https://pagina-ong" class="feature is-revealing">
-                                <h4 class="feature-title h3-mobile">Nome ONG1</h4>
+                                <h4 id="nome_ong" class="feature-title h3-mobile">Nome ONG1</h4>
                                 <div class="feature-inner">
                                     <div class="feature-icon">
-                                        <svg width="48" height="48" xmlns="http://www.w3.org/2000/svg">
-                                            <g fill="none" fill-rule="evenodd">
-                                                <path fill="#84E482" d="M48 16v32H16z"/>
-                                                <path fill="#0EB3CE" d="M0 0h32v32H0z"/>
-                                            </g>
-                                        </svg>
+                                        <img id="imagem_ong" src="" alt="">
                                     </div>
                                     <p class="text-sm">Descrição da ONG Apoiada</p>
                                 </div>
@@ -202,7 +198,7 @@
             <div class="container">
                 <div class="site-footer-inner">
                     <div class="brand footer-brand">
-                        <a href="#">
+                        <a href="http://ongweb.social">
                             <img src="../../assets/imgs/icon_ONGWeb.png" alt="ONGWebLogo" width="38" height="38">
                         </a>
                     </div>
@@ -238,6 +234,7 @@
             </div>
         </footer>
     </div>
+    <script src="./../../../../node_modules/axios/dist/axios.min.js"></script>
     <script src="../../dist/js/main.min.js"></script>
 </body>
 </html>
