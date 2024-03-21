@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+
+    <title>ONGWeb</title>
+
+    <!-- Bootstrap + Font Awesome + Main CSS -->
+    <link href="../../dist/css/bootstrap.css" rel="stylesheet">
+    <!-- customize this file if needed -->
+    <link href="../../dist/css/main.css" rel="stylesheet">
+    <link href="../../dist/css/home-page.css" rel="stylesheet">
+
+</head>
+
+<body style="height: 100%;">
+    <div class="wrapper">
+        <div class="container">
+            <header style="display: flex; justify-content: space-between;">
+                <div>
+                    <div class="row">
+                        <div class="navbar">
+                            <div class="navbar-header">
+                                <button class="navbar-toggle collapsed"></button> 
+                                <a id="name-ong" class="navbar-brand" href="#">[NomeDaONG]</a>
+                            </div>
+    
+                            <div class="collapse navbar-collapse">
+                                <ul class="nav navbar-nav">
+                                    <li>
+                                        <a id="email-ong">email@daong.com.br</a>
+                                    </li>
+    
+                                    <li>
+                                        <a id="phone-ong">(43) 0000-0000</a>
+                                    </li>
+    
+                                    <li>
+                                        <a id="cnpj-ong">CNPJ: 00.000.000/0000-00</a>
+                                    </li>
+    
+                                    <li style="display: flex;">
+                                        <a href="../../src/ui/index.html">Voltar a ONGWeb</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 col-lg-12">
+                            <h1 id="description-ong" class="intro">
+                                [Texto Sobre a ONG] Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                Natus aliquam, et cum a laudantium impedit. Ducimus repellat blanditiis adipisci nobis
+                                nulla, sit architecto. Praesentium perferendis facilis beatae iusto sit asperiores.
+                            </h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="ong-img">
+                    <img id="ong-img" src="" alt="">
+                </div>
+            
+            </header>
+            <div class="row grid-list-wrapper no-gutter-space" id="imagens">
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="container">
+            <nav class="nav-footer">
+                <ul>
+                    <a href="index.html">Voltar a ONGWeb</a>
+                </ul>
+
+                <p class="credits text-center">&copy; All Rights Reserved 2024</p>
+            </nav>
+        </div>
+    </footer>
+    <script src="./../../../node_modules/axios/dist/axios.min.js"></script>
+    <script src="../js/homepage.js"></script>
+</body>
+
+</html>

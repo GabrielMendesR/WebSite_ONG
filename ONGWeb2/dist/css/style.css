@@ -1319,6 +1319,8 @@ label {
 }
 
 .hero-media {
+    display: flex;
+    justify-content: center;
     position: relative;
     height: 200px;
     margin-top: 40px;
@@ -1327,6 +1329,8 @@ label {
 }
 
 .hero-media::before {
+    display: flex;
+    justify-content: center;
     content: '';
     position: absolute;
     top: 0;
@@ -1450,6 +1454,10 @@ label {
     width: 200px;
     display: flex;
     justify-content: center
+}
+
+.hero-img {
+    height: 100%;
 }
 
 .ong-icon {

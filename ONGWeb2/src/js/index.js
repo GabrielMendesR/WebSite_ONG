@@ -1,11 +1,11 @@
 var ong_list = []
 
 window.onload = function() {
-  fetch('../ui/header/header.html')
-      .then(response => response.text())
-      .then(html => {
-          document.getElementById('header').innerHTML = html;
-  });
+  // fetch('../ui/header/header.html')
+  //     .then(response => response.text())
+  //     .then(html => {
+  //         document.getElementById('header').innerHTML = html;
+  // });
   getAllOngs()
 };
 
@@ -22,7 +22,7 @@ function listOngs() {
     // Set div content      is-revealing
     div.innerHTML = `
       <div class="feature">
-        <h4 class="feature-title h3-mobile">${ong.name}</h4>
+      <a href='home-page.html?id=${ong.id}'> <h4 class="feature-title h3-mobile">${ong.name}</h4> </a>
         <div class="feature-inner">
             <div class="feature-icon">
               <img class="ong-icon" src="${ong.main_image_url}" alt="Imagem Ong">

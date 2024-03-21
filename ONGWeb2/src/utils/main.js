@@ -73,8 +73,6 @@ function getTokenParams(headers) {
 
 app.post('/api/ong', upload.single('image'), (req, res) => {
   const filePath = req.file.path.replace(/\\/g, '/');
-  const normalizedFilePath = path.normalize(filePath);
-
   database.createOng({...req.body, filePath})
   res.json({ message: `ONG cadastrada com sucesso` })
 });
@@ -82,9 +80,7 @@ app.post('/api/ong', upload.single('image'), (req, res) => {
 
 app.get('/api/ong', async (req, res) => {
   const ongs = await database.getAllOngs(req)
-  //console.log(ongs)
   const baseUrl = `${req.protocol}://${req.hostname}${req.baseUrl}:${port}`;
-  console.log("req.baseUrl:",req)
   await ongs.forEach(ong => {
     //ong.main_image_url = path.join(my_api_url, ong.main_image_url)
     ong.main_image_url = `${baseUrl}/${ong.main_image_url}`
@@ -115,13 +111,12 @@ app.delete('/api/ong/', async (req, res) => {
 
 
 app.get('/api/ong/:id', async (req, res) => {
-  const decoded = getTokenParams(req.headers);
   const id = req.params.id;
-  if(decoded.uid != id) {
-    return res.status(403).json({ message: 'Você não tem permissão para ver os detalhes desta ONG!' });
-  }
-  const ong = await database.getOngById(id)
-  res.json({ message: ong })
+  const baseUrl = `${req.protocol}://${req.hostname}${req.baseUrl}:${port}`;
+  let ong = await database.getOngById(id)
+  if(ong.length === 0) return
+  ong[0].main_image_url = `${baseUrl}/${ong[0].main_image_url}`
+  res.json( ong )
 });
 
 const port = 3000;
