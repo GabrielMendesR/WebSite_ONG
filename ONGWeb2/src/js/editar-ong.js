@@ -109,16 +109,16 @@ async function update() {
 
     const formData = new FormData()
 
-    formData.append(email, document.getElementById('email').value),
-    formData.append(senha, document.getElementById('senha').value),
-    formData.append(confirmarSenha, document.getElementById('confirmarSenha').value),
-    formData.append(telefone, document.getElementById('telefone').value),
-    formData.append(rua, document.getElementById('rua').value),
-    formData.append(website, document.getElementById('website').value),
-    formData.append(descricao, document.getElementById('descricao').value),
-    formData.append(estado, document.getElementById('estado').value),
-    formData.append(numero, document.getElementById('numero').value),
-    formData.append(cidade, document.getElementById('cidade').value)
+    formData.append('email', document.getElementById('email').value),
+    formData.append('senha', document.getElementById('senha').value),
+    formData.append('confirmarSenha', document.getElementById('confirmarSenha').value),
+    formData.append('telefone', document.getElementById('telefone').value),
+    formData.append('rua', document.getElementById('rua').value),
+    formData.append('website', document.getElementById('website').value),
+    formData.append('descricao', document.getElementById('descricao').value),
+    formData.append('estado', document.getElementById('estado').value),
+    formData.append('numero', document.getElementById('numero').value),
+    formData.append('cidade', document.getElementById('cidade').value)
 
     // for (const file of document.getElementById('imagemInput').files) {
     //     const base64String = await imageToBase64(file);
@@ -130,7 +130,7 @@ async function update() {
     
     axios.put('http://localhost:3000/api/ong/update', formData, { 
         headers: {
-            'Content-Type': 'multipart/form-data',
+            'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`
         }
     })

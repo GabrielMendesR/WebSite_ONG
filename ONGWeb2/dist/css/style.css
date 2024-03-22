@@ -1812,3 +1812,6 @@ main {
 .gp-16 {
     gap: 16px;
 }
+.logout-btn {
+    cursor: pointer;
+}

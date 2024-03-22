@@ -18,7 +18,7 @@ const pool = mysql.createPool({
     connectionLimit: 10, 
     host: 'localhost',
     user: 'root',
-    password: 'root',
+    password: '1234',
     //database: 'ong_web' //comentar essa linha na criação do database
 });
 
@@ -72,14 +72,15 @@ function createDatabase() {
 function updateOng(id_ong, ong) {
     //ong.descricao adicionar a tabela
     const sql = `UPDATE ong_list SET 
-        phone_number = '${ong.telefone}'
-        email = '${ong.email}'
-        password = '${ong.senha}'
-        code = '${ong.code}'
-        url = '${ong.website}'
-        address_state = '${ong.estado}'
-        address_street = '${ong.rua}'
-        address_number = '${ong.numero}'
+        phone_number = '${ong.telefone}',
+        email = '${ong.email}',
+        password = '${ong.senha}',
+        description = '${ong.descricao}',
+        url = '${ong.website}',
+        
+        address_state = '${ong.estado}',
+        address_street = '${ong.rua}',
+        address_number = '${ong.numero}',
         address_city = '${ong.cidade}'
     WHERE id = ${id_ong};`
     return new Promise((resolve, reject) => { 

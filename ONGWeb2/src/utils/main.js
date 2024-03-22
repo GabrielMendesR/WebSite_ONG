@@ -93,9 +93,6 @@ app.put('/api/ong/update', async (req, res) => {
   if (!decoded) {
     return res.status(401).json({ message: 'Usuário não autenticado!' });
   }
-  // if(decoded.uid != id) {
-  //   return res.status(403).json({ message: 'Você não tem permissão para editar esta ONG!' });
-  // }
   const result = await database.updateOng(decoded.uid, req.body)
   res.json({ message: result, userId: decoded.userId  })
 });

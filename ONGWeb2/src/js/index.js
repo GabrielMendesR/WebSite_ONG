@@ -9,9 +9,9 @@ window.onload = function() {
 
     const li = document.createElement('li');
     li.innerHTML = `
-        <a id="login-button" onclick="logout()">Sair</a>
+        <a id="login-button" class="logout-btn" onclick="logout()">Sair</a>
       `
-    document.getElementById('header-fields').appendChild(li)
+    document.getElementById('header-fields').prepend(li)
   }
   getAllOngs()
 
