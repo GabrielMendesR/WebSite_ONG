@@ -1,7 +1,3 @@
-document.getElementById('cadastroForm').addEventListener('submit', function (event) {
-    event.preventDefault();
-});
-
 function formatarTelefone(input) {
     const digitos = input.value.replace(/\D/g, '');
 
@@ -118,6 +114,42 @@ function getOngsTest() {
     });
 }
 
+function fireErrorMessage(text) {
+    Swal.fire({
+        position: "top-end",
+        icon: "error",
+        text: text,
+        showConfirmButton: false,
+        timer: 1500,
+        backdrop: false,
+        toast: true,
+    });
+}
+
+function validateForm(form) {
+    return new Promise((resolve, reject) => {
+        console.log(form)
+        
+        if (form.get('senha') !== form.get('confirmarSenha')) 
+            reject('As senhas não coincidem!')
+
+        if (!form.get('senha')) 
+            reject('A senha deve ser informada!')
+
+        if (!form.get('email'))
+            reject('O E-mail deve ser informado!')
+
+        if (!form.get('cnpj')) 
+            reject('O CNPJ deve ser informado!')
+
+        if (!form.get('image')) 
+            reject('Insira uma imagem para a ONG!')
+
+
+        resolve();
+    })
+}
+
 async function cadastrar() {
 
     const formData = new FormData()
@@ -134,19 +166,19 @@ async function cadastrar() {
     formData.append('estado', document.getElementById('estado').value)
     formData.append('numero', document.getElementById('numero').value)
     formData.append('cidade', document.getElementById('cidade').value)
-    formData.append('image', document.getElementById('imagemInput').files[0])
+    formData.append('image', document.getElementById('imagemInput')?.files[0] ?? "")
 
-    //if (obj.senha !== obj.confirmarSenha) { return alert("Confirmação de Senha Inválida"); } 
-
-    axios.post('http://localhost:3000/api/ong', formData, {
-        headers: {
-            'Content-Type': 'multipart/form-data',
-        }
-    })
-    .then(response => {
-      console.log('Response:', response.data);
-    })
-    .catch(error => {
-      console.error('Error:', error);
-    });
+    validateForm(formData).then(() => {
+        axios.post('http://localhost:3000/api/ong', formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data',
+            }
+        })
+        .then(response => {
+          console.log('Response:', response.data);
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+    }).catch(error => fireErrorMessage(error))
 }

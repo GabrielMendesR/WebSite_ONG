@@ -51,9 +51,8 @@ app.get('/', (req, res) => {
  
 app.post('/api/login', async (req, res) => {
   const login = await database.checkLogin(req.body)
-  console.log("login:",login)
   if(!login || login.length == 0) {
-    res.status(401);
+    res.status(400);
     res.json({ message: "Usuário ou senha inválidos" })
     return
   }
@@ -72,6 +71,12 @@ function getTokenParams(headers) {
 }
 
 app.post('/api/ong', upload.single('image'), (req, res) => {
+
+  if (!req.body.senha)  return  res.status(400).json({ error: `É obrigatorio informar a senha!` })
+  if (!req.body.cnpj) return res.status(400).json({ error: `É obrigatorio informar o CNPJ!` })
+  if (!req.body.nome) return res.status(400).json({ error: `É obrigatorio informar o nome!` })
+  if (!req.body.email)  return  res.status(400).json({ error: `É obrigatorio informar um email!` })
+
   const filePath = req.file.path.replace(/\\/g, '/');
   database.createOng({...req.body, filePath})
   res.json({ message: `ONG cadastrada com sucesso` })
@@ -103,7 +108,7 @@ app.delete('/api/ong/', async (req, res) => {
     return res.status(401).json({ message: 'Usuário não autenticado!' });
   }
   const result = await database.deleteOng(decoded.uid, req)
-  res.json({ message: result, userId: decoded.userId  })
+  res.json({ message: `Deletada ONG de ID ${decoded.uid}`, result })
 });
 
 

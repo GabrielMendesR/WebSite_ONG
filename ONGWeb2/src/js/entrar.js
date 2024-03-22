@@ -1,5 +1,3 @@
-
-
 document.getElementById('login-form').addEventListener('submit', function (event) {
   event.preventDefault();
 
@@ -22,10 +20,19 @@ function login(credentials){
   .then(response => {
     console.log('Response:', response.data);
     localStorage.setItem('token', response.data.token);
-    window.location.href = "/ONGWeb2/src/ui/index.html";
+    window.location.href = "/ONGWeb2/src/ui/";
   })
   .catch(error => {
-    console.error('Error:', error);
+    Swal.fire({
+      backdrop: false,
+      position: "top-end",
+      icon: "error",
+      title: "",
+      text: "Login ou senha inválidos!",
+      showConfirmButton: false,
+      timer: 1500,
+      toast: true,
+    });
   });
 }
 
