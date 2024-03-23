@@ -77,8 +77,8 @@ app.post('/api/ong', upload.single('image'), async (req, res) => {
   if (req.body.nome.trim() == '') return res.status(400).json({ error: `É obrigatorio informar o nome!` })
   if (req.body.email.trim() == '')  return  res.status(400).json({ error: `É obrigatorio informar um email!` })
 
-  //const filePath = req.file.path.replace(/\\/g, '/');
-  const filePath = ''
+  const filePath = req.file.path.replace(/\\/g, '/');
+  //const filePath = ''
   await database.createOng({...req.body, filePath}).then(result => {
     res.json({ message: `ONG cadastrada com sucesso` })
   })
