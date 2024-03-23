@@ -142,19 +142,6 @@ async function update() {
     formData.append('numero', document.getElementById('numero').value),
     formData.append('cidade', document.getElementById('cidade').value)
 
-    if (formData.get('senha') !== formData.get('confirmarSenha')) { 
-        Swal.fire({
-            backdrop: false,
-            width: '200px',
-            position: "top-end",
-            icon: "error",
-            text: "As senhas não coincidem!",
-            showConfirmButton: false,
-            timer: 1500
-        });
-        return
-     } 
-
     const token = localStorage.getItem('token');
     
     validateForm(formData).then(() => {

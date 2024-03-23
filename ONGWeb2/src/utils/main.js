@@ -70,18 +70,23 @@ function getTokenParams(headers) {
   return decoded
 }
 
-app.post('/api/ong', upload.single('image'), (req, res) => {
+app.post('/api/ong', upload.single('image'), async (req, res) => {
 
-  if (!req.body.senha)  return  res.status(400).json({ error: `É obrigatorio informar a senha!` })
-  if (!req.body.cnpj) return res.status(400).json({ error: `É obrigatorio informar o CNPJ!` })
-  if (!req.body.nome) return res.status(400).json({ error: `É obrigatorio informar o nome!` })
-  if (!req.body.email)  return  res.status(400).json({ error: `É obrigatorio informar um email!` })
+  if (req.body.senha.trim() == '')  return  res.status(400).json({ error: `É obrigatorio informar a senha!` })
+  if (req.body.cnpj.trim() == '') return res.status(400).json({ error: `É obrigatorio informar o CNPJ!` })
+  if (req.body.nome.trim() == '') return res.status(400).json({ error: `É obrigatorio informar o nome!` })
+  if (req.body.email.trim() == '')  return  res.status(400).json({ error: `É obrigatorio informar um email!` })
 
-  const filePath = req.file.path.replace(/\\/g, '/');
-  database.createOng({...req.body, filePath})
-  res.json({ message: `ONG cadastrada com sucesso` })
-});
-
+  //const filePath = req.file.path.replace(/\\/g, '/');
+  const filePath = ''
+  await database.createOng({...req.body, filePath}).then(result => {
+    res.json({ message: `ONG cadastrada com sucesso` })
+  })
+  .catch(error => {
+    console.error('Error creating ong:', error);
+    return  res.status(400).json({ error })
+  });
+})
 
 app.get('/api/ong', async (req, res) => {
   const ongs = await database.getAllOngs(req)

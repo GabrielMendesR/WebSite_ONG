@@ -178,7 +178,8 @@ async function cadastrar() {
           console.log('Response:', response.data);
         })
         .catch(error => {
-          console.error('Error:', error);
+            fireErrorMessage(error)
+            console.error('Error:', error);
         });
     }).catch(error => fireErrorMessage(error))
 }

@@ -2,6 +2,7 @@
 <html lang="pt-br">
 
 <head>
+    <link rel="shortcut icon" href="../../assets/imgs/icon_ONGWeb.png" >
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tela de Login</title>
@@ -13,20 +14,24 @@
         <div class="cabecalho">
             <a href="../ui/index.html"><img src="../../assets/imgs/voltar.png" alt="Voltar" width="40px"></a>
         </div>
-        <form id="login-form">
+        <div class="login-form">
             <h2>Login</h2>
-            <div class="input-container">
-                <input type="email" id="email" placeholder="Email" required>
+            <div id="fields-section">
+                <div class="input-container">
+                    <input type="email" id="email" placeholder="Email" required>
+                </div>
+                <div class="input-container">
+                    <input type="password" id="senha" placeholder="Senha" required>
+                </div>
+                <div>
+                    
+                    <button id="submit-button" onclick="login()">Entrar</button>
+                    <p>ou</p>
+                    <a href="cadastro.html">Cadastrar Minha ONG </a>
+                </div>
             </div>
-            <div class="input-container">
-                <input type="password" id="senha" placeholder="Senha" required>
-            </div>
-            <div>
-                <button type="submit">Entrar</button>
-                <p>ou</p>
-                <a href="cadastro.html">Cadastrar Minha ONG </a>
-            </div>
-        </form>
+            <div id="load-spinner" style="display: none;" class="lds-dual-ring"></div>
+        </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="./../../../node_modules/axios/dist/axios.min.js"></script>

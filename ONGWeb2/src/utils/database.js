@@ -170,8 +170,27 @@ function checkLogin(credentials) {
     })
 }
 
-function createOng(ongObj) {
-    const query = `
+function ongAlreadyExists(ongObj) {
+
+    const checkEmailQuery = `
+        SELECT * FROM ong_list
+        WHERE email = '${ongObj.email}' OR code = '${ongObj.cnpj}'`
+
+    return new Promise((resolve, reject) => { 
+        pool.query(checkEmailQuery, (error, results, fields) => {
+            if (error) reject(error)
+            resolve(results?.length > 0);
+        });
+    })
+
+}
+
+async function createOng(ongObj) {
+    return new Promise(async (resolve, reject) => { 
+        if (await ongAlreadyExists(ongObj)) {
+            reject('Já existe uma ONG com CPNJ ou Email informados!')
+        }
+        const query = `
         INSERT INTO ong_list(
             name,
             phone_number,
@@ -200,13 +219,11 @@ function createOng(ongObj) {
             '${ongObj.cidade}'
         );
     `
-    pool.query(query, (error, results, fields) => {
-        if (error) {
-            console.error('Error executing query:', error);
-            return;
-        }
-        console.log('Query results:', results);
-    });
+        pool.query(query, (error, results, fields) => {
+            if (error) reject('Error executing query:', error);
+            resolve(results);
+        });
+    })
 }
 
 
