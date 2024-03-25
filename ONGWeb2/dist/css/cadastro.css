@@ -23,12 +23,7 @@ h4 {
 h6 {
     padding: 0px;
     margin: 0px;
-}
-
-a {
-    text-decoration: none;
-    color: red;
-}
+}s
 
 .cabecalho {
     width: 100%;
@@ -118,15 +113,6 @@ input[type='file'] {
     font-weight: bold;
 }
 
-.botaoAlterar {
-    width: 80%;
-    margin-right: 4%;
-}
-
-.botaoDeletar{
-    width: 15%;
-    background-color: red;
-}
 .campoImg {
     max-width: 1000px;
     margin: 0 auto;

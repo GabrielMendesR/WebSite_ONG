@@ -1,8 +1,8 @@
 var ong_list = []
 
-window.onload = function() {
+window.onload = function () {
   const token = localStorage.getItem('token');
-  if(token) {
+  if (token) {
     document.getElementById('login-button').style.display = 'none';
     document.getElementById('register-button').textContent = 'Editar Minha ONG';
     document.getElementById('register-button').href = 'editar-ong.html';
@@ -19,7 +19,7 @@ window.onload = function() {
 
 function logout() {
   localStorage.removeItem('token')
-  location.reload() 
+  location.reload()
 }
 
 
@@ -35,14 +35,14 @@ function listOngs() {
     // Set div content      is-revealing
     div.innerHTML = `
       <div class="feature">
-      <a href='home-page.html?id=${ong.id}'> <h4 class="feature-title h3-mobile">${ong.name}</h4> </a>
+      <a href='home-page.html?id=${ong.id}'> <h4 class="feature-title h3-mobile">${ong.name}</h4> 
         <div class="feature-inner">
             <div class="feature-icon">
               <img class="ong-icon" src="${ong.main_image_url}" alt="Imagem Ong">
             </div>
-          <p class="text-sm">${ong.description}</p>
           <a href="${ong.url}" target="_blank">Website</a>
         </div>
+      </a>
       </div>
     `;
     container.appendChild(div);
@@ -51,13 +51,13 @@ function listOngs() {
 
 function getAllOngs() {
   axios.get('http://localhost:3000/api/ong/')
-  .then(response => {
-    console.log('Response:', response.data);
-    ong_list = response.data.data
-    listOngs()
-  })
-  .catch(error => {
-    console.error('Error:', error);
-  });
+    .then(response => {
+      console.log('Response:', response.data);
+      ong_list = response.data.data
+      listOngs()
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
 }
 
