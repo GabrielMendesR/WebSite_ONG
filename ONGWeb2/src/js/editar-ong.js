@@ -68,16 +68,27 @@ function handleDrop(event) {
     handleFiles(files);
 }
 
+function fireErrorMessage(text) {
+    Swal.fire({
+        position: "top-end",
+        icon: "error",
+        text: text,
+        showConfirmButton: false,
+        timer: 1500,
+        toast: true,
+    });
+}
+
 function deleteOng() {
     Swal.fire({
         title: "Tem certeza?",
         text: "Sua ONG será excluída permanentemente do sistema !",
         icon: "warning",
         showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
+        cancelButtonColor: "#3085d6",
+        confirmButtonColor: "#d33",
+        cancelButtonText: 'Cancelar',
         confirmButtonText: "Sim, quero excluir",
-        cancelButtonText: 'Cancelar'
       }).then((result) => {
         if (result.isConfirmed) {
             const token = localStorage.getItem('token');
@@ -106,7 +117,6 @@ function deleteOng() {
 
 function validateForm(form) {
     return new Promise((resolve, reject) => {
-        console.log(form)
         
         if (form.get('senha') !== form.get('confirmarSenha')) 
             reject('As senhas não coincidem!')

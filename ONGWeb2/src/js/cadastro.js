@@ -145,7 +145,6 @@ function validateForm(form) {
         if (!form.get('image')) 
             reject('Insira uma imagem para a ONG!')
 
-
         resolve();
     })
 }

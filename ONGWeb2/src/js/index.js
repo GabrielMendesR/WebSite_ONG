@@ -14,8 +14,28 @@ window.onload = function () {
     document.getElementById('header-fields').prepend(li)
   }
   getAllOngs()
-
 };
+
+function getProfileAvatar() {
+  const token = localStorage.getItem('token');
+  decoded = parseJwt(token)
+  const ong = ong_list.find(ong => ong.id == decoded.uid)
+  const avatar = document.getElementById('profile-avatar')
+  const name = document.getElementById('profile-name')
+  avatar.src = ong.main_image_url
+  avatar.style.display = "block"
+  name.innerText = ong.name
+}
+
+function parseJwt (token) {
+  var base64Url = token.split('.')[1];
+  var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+  var jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function(c) {
+      return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+  }).join(''));
+
+  return JSON.parse(jsonPayload);
+}
 
 function logout() {
   localStorage.removeItem('token')
@@ -55,6 +75,7 @@ function getAllOngs() {
       console.log('Response:', response.data);
       ong_list = response.data.data
       listOngs()
+      getProfileAvatar()
     })
     .catch(error => {
       console.error('Error:', error);
