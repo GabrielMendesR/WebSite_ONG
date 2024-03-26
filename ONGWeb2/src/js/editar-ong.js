@@ -158,7 +158,7 @@ async function update() {
     formData.append('estado', document.getElementById('estado').value),
     formData.append('numero', document.getElementById('numero').value),
     formData.append('cidade', document.getElementById('cidade').value)
-    formData.append('image', document.getElementById('imagemInput').files[0])
+    formData.append('image', document.getElementById('imagemInput')?.files[0] ?? "")
 
     const token = localStorage.getItem('token');
     
