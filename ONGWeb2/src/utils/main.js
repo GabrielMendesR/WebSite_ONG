@@ -98,13 +98,15 @@ app.get('/api/ong', async (req, res) => {
   res.json({ data: ongs })
 });
 
-app.put('/api/ong/update', async (req, res) => {
+app.put('/api/ong/update', upload.single('image'), async (req, res) => {
   const decoded = getTokenParams(req.headers);
   if (!decoded) {
     return res.status(401).json({ message: 'Usuário não autenticado!' });
   }
-  const result = await database.updateOng(decoded.uid, req.body)
-  res.json({ message: result, userId: decoded.userId  })
+  const filePath = req.file.path.replace(/\\/g, '/');
+  database.updateOng(decoded.uid, {...req.body, filePath})
+  .then(result => res.json({ message: result, userId: decoded.userId  }))
+  .catch(err => res.status(400).json({ message: err }))
 });
 
 app.delete('/api/ong/', async (req, res) => {

@@ -2,6 +2,39 @@ document.getElementById('cadastroForm').addEventListener('submit', function (eve
     event.preventDefault();
 });
 
+
+window.onload = function() {
+    getOngById()
+};
+
+function getOngById() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const ongId = urlParams.get('id');
+
+    axios.get('http://localhost:3000/api/ong/' + ongId)
+    .then(response => {
+        console.log('Response:', response.data);
+        resolveOng(response.data[0])
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+}
+
+function resolveOng(ong) {
+    document.getElementById('telefone').value = ong.phone_number
+    document.getElementById('email').value = ong.email
+    document.getElementById('descricao').value = ong.description
+    document.getElementById('website').value = ong.url
+    document.getElementById('estado').value = ong.address_state
+    document.getElementById('rua').value = ong.address_street
+    document.getElementById('numero').value = ong.address_number
+    document.getElementById('cidade').value = ong.address_city
+    
+    document.getElementById('senha').value = ong.password //revisar esse fluxo, não é o correto
+    document.getElementById('confirmarSenha').value = ong.password
+}
+
 function formatarTelefone(input) {
     const digitos = input.value.replace(/\D/g, '');
 
@@ -9,37 +42,14 @@ function formatarTelefone(input) {
     if (digitos.length > 0) {
         telefoneFormatado = '(' + digitos.substring(0, 2);
         if (digitos.length > 2) {
-            telefoneFormatado += ') ' + digitos.substring(2, 6);
+            telefoneFormatado += ') ' + digitos.substring(2, 7);
         }
         if (digitos.length > 6) {
-            telefoneFormatado += '-' + digitos.substring(6, 11);
+            telefoneFormatado += '-' + digitos.substring(7, 11);
         }
     }
     input.value = telefoneFormatado;
 }
-
-function formatarCNPJ(input) {
-    const digitos = input.value.replace(/\D/g, '');
-
-    let cnpjFormatado = '';
-    if (digitos.length > 0) {
-        cnpjFormatado = digitos.substring(0, 2);
-        if (digitos.length > 2) {
-            cnpjFormatado += '.' + digitos.substring(2, 5);
-        }
-        if (digitos.length > 5) {
-            cnpjFormatado += '.' + digitos.substring(5, 8);
-        }
-        if (digitos.length > 8) {
-            cnpjFormatado += '/' + digitos.substring(8, 12);
-        }
-        if (digitos.length > 12) {
-            cnpjFormatado += '-' + digitos.substring(12, 14);
-        }
-    }
-    input.value = cnpjFormatado;
-}
-
 
 
 function handleFiles(files) {
@@ -127,9 +137,6 @@ function validateForm(form) {
         if (!form.get('email'))
             reject('O E-mail deve ser informado!')
 
-        if (!form.get('cnpj')) 
-            reject('O CNPJ deve ser informado!')
-
         if (!form.get('image')) 
             reject('Insira uma imagem para a ONG!')
 
@@ -151,13 +158,14 @@ async function update() {
     formData.append('estado', document.getElementById('estado').value),
     formData.append('numero', document.getElementById('numero').value),
     formData.append('cidade', document.getElementById('cidade').value)
+    formData.append('image', document.getElementById('imagemInput').files[0])
 
     const token = localStorage.getItem('token');
     
     validateForm(formData).then(() => {
         axios.put('http://localhost:3000/api/ong/update', formData, { 
             headers: {
-                'Content-Type': 'application/json',
+                'Content-Type': 'multipart/form-data',
                 'Authorization': `Bearer ${token}`
             }
         })

@@ -2,10 +2,11 @@ var ong_list = []
 
 window.onload = function () {
   const token = localStorage.getItem('token');
-  if (token) {
+  const decoded = parseJwt(token)
+  if (token && decoded) {
     document.getElementById('login-button').style.display = 'none';
     document.getElementById('register-button').textContent = 'Editar Minha ONG';
-    document.getElementById('register-button').href = 'editar-ong.html';
+    document.getElementById('register-button').href = 'editar-ong.html?id=' + decoded.uid;
 
     const li = document.createElement('li');
     li.innerHTML = `

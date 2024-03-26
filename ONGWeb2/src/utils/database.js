@@ -70,13 +70,13 @@ function createDatabase() {
 }
 
 function updateOng(id_ong, ong) {
-    //ong.descricao adicionar a tabela
     const sql = `UPDATE ong_list SET 
         phone_number = '${ong.telefone}',
         email = '${ong.email}',
         password = '${ong.senha}',
         description = '${ong.descricao}',
         url = '${ong.website}',
+        main_image_url = '${ong.filePath}',
         
         address_state = '${ong.estado}',
         address_street = '${ong.rua}',
@@ -86,7 +86,7 @@ function updateOng(id_ong, ong) {
 
     return new Promise(async (resolve, reject) => { 
 
-        if (await ongAlreadyExists(ongObj)) {
+        if (await ongAlreadyExists({...ong, id: id_ong})) {
             reject('Já existe uma ONG com CPNJ ou Email informados!')
             return
         }
@@ -178,10 +178,10 @@ function checkLogin(credentials) {
 }
 
 function ongAlreadyExists(ongObj) {
-
+    console.log('ongObj:', ongObj)
     const checkEmailQuery = `
         SELECT * FROM ong_list
-        WHERE email = '${ongObj.email}' OR code = '${ongObj.cnpj}'`
+        WHERE (email = '${ongObj.email}' OR code = '${ongObj.cnpj}') AND id != '${ongObj.id}'`
 
     return new Promise((resolve, reject) => { 
         pool.query(checkEmailQuery, (error, results, fields) => {
