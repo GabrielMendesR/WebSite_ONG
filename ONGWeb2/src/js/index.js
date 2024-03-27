@@ -2,8 +2,8 @@ var ong_list = []
 
 window.onload = function () {
   const token = localStorage.getItem('token');
-  const decoded = parseJwt(token)
-  if (token && decoded) {
+  if (token) {
+    const decoded = parseJwt(token)
     document.getElementById('login-button').style.display = 'none';
     document.getElementById('register-button').textContent = 'Editar Minha ONG';
     document.getElementById('register-button').href = 'editar-ong.html?id=' + decoded.uid;
@@ -15,6 +15,7 @@ window.onload = function () {
     document.getElementById('header-fields').prepend(li)
   }
   getAllOngs()
+  
 };
 
 function getProfileAvatar() {
