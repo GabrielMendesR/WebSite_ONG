@@ -21,6 +21,7 @@ window.onload = function () {
 function getProfileAvatar() {
   const token = localStorage.getItem('token');
   decoded = parseJwt(token)
+  if(!decoded) return
   const ong = ong_list.find(ong => ong.id == decoded.uid)
   const avatar = document.getElementById('profile-avatar')
   const name = document.getElementById('profile-name')
@@ -30,6 +31,7 @@ function getProfileAvatar() {
 }
 
 function parseJwt (token) {
+  if(!token) return
   var base64Url = token.split('.')[1];
   var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
   var jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function(c) {
