@@ -116,7 +116,7 @@ function createTables() {
             console.error('Error executing query:', error);
             return;
         }
-        console.log('Query results:', results);
+        //console.log('Query results:', results);
     });
 
     pool.query(createImagesTableQuery, (error, results, fields) => {
@@ -124,7 +124,7 @@ function createTables() {
             console.error('Error executing query:', error);
             return;
         }
-        console.log('Query results:', results);
+        //console.log('Query results:', results);
     });
 }
 
@@ -171,14 +171,14 @@ function checkLogin(credentials) {
                 console.error('Error executing query:', error);
                 reject(error);
             }
-            console.log("results:",results)
+            //console.log("results:",results)
             resolve(results);
         });
     })
 }
 
 function ongAlreadyExists(ongObj) {
-    console.log('ongObj:', ongObj)
+    //console.log('ongObj:', ongObj)
     const checkEmailQuery = `
         SELECT * FROM ong_list
         WHERE (email = '${ongObj.email}' OR code = '${ongObj.cnpj}') AND id != '${ongObj.id}'`

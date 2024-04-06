@@ -128,8 +128,10 @@ app.get('/api/ong/:id', async (req, res) => {
   res.json( ong )
 });
 
+const hostname = '0.0.0.0'; // Listen on all available network interfaces
 const port = 3000;
-app.listen(port, () => {
+
+app.listen(port, hostname, () => {
   console.log(`Server is running on port ${port}`);
 });
 
