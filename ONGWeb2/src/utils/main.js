@@ -48,8 +48,8 @@ app.get('/api/ong/images', async (req, res) => {
 app.get('/', (req, res) => {
     res.send('Aplicação rodando!\n');
 });
- 
-app.post('/api/login', async (req, res) => {
+
+app.post('http://152.67.41.48:3000/api/login', async (req, res) => {
   const login = await database.checkLogin(req.body)
   if(!login || login.length == 0) {
     res.status(400);
@@ -70,7 +70,7 @@ function getTokenParams(headers) {
   return decoded
 }
 
-app.post('/api/ong', upload.single('image'), async (req, res) => {
+app.post('http://152.67.41.48:3000/api/ong', upload.single('image'), async (req, res) => {
 
   if (req.body.senha.trim() == '')  return  res.status(400).json({ error: `É obrigatorio informar a senha!` })
   if (req.body.cnpj.trim() == '') return res.status(400).json({ error: `É obrigatorio informar o CNPJ!` })
