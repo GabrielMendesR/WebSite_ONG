@@ -13,7 +13,7 @@ function login(){
   document.getElementById('load-spinner').style.display = 'inline-block'
 
   const token = localStorage.getItem('token');
-  axios.post('http://localhost:3000/api/login', credentials,{
+  axios.post('http://152.67.41.48:3000/api/login', credentials,{
     headers: {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`

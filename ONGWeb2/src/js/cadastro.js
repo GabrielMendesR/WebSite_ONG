@@ -66,7 +66,7 @@ function handleDrop(event) {
 
 
 function getOngImagesTest() {
-    axios.get('http://localhost:3000/api/ong/images')
+    axios.get('http://152.67.41.48:3000/api/ong/images')
     .then(response => {
       console.log('Response:', response.data);
     })
@@ -84,7 +84,7 @@ function uploadImageTest() {
     formData.append('image', images[0]);
 
 
-    axios.post('http://localhost:3000/api/ong/images', formData, {
+    axios.post('http://152.67.41.48:3000/api/ong/images', formData, {
         headers: {
             'Content-Type': 'multipart/form-data',
             'Authorization': `Bearer ${token}`
@@ -100,7 +100,7 @@ function uploadImageTest() {
 
 function getOngsTest() {
     const token = localStorage.getItem('token');
-    axios.get('http://localhost:3000/api/ong', {
+    axios.get('http://152.67.41.48:3000/api/ong', {
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`
@@ -168,7 +168,7 @@ async function cadastrar() {
     formData.append('image', document.getElementById('imagemInput')?.files[0] ?? "")
 
     validateForm(formData).then(() => {
-        axios.post('http://localhost:3000/api/ong', formData, {
+        axios.post('http://152.67.41.48:3000/api/ong', formData, {
             headers: {
                 'Content-Type': 'multipart/form-data',
             }
