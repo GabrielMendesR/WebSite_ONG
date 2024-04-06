@@ -8,7 +8,7 @@ const SECRET = 'U0hBTEFMQQ=='
 const router = express.Router();
 const path = require('path');
 
-app.use(cors({ origin: true, credentials: true }), express.json())
+app.use(cors({origin: '*'}), express.json())
 
 const imagesDirectory = path.resolve(__dirname, '../../../uploads/'); //pasta das imagens
 app.use('/uploads', express.static(imagesDirectory)); //permite acessar pelo navegador, ex: http://152.67.41.48:3000/uploads/20240308_015019.jpg
@@ -70,7 +70,7 @@ function getTokenParams(headers) {
   return decoded
 }
 
-app.post('http://152.67.41.48:3000/api/ong', upload.single('image'), async (req, res) => {
+app.post('/api/ong', upload.single('image'), async (req, res) => {
 
   if (req.body.senha.trim() == '')  return  res.status(400).json({ error: `É obrigatorio informar a senha!` })
   if (req.body.cnpj.trim() == '') return res.status(400).json({ error: `É obrigatorio informar o CNPJ!` })
@@ -132,7 +132,7 @@ const hostname = '0.0.0.0'; // Listen on all available network interfaces
 const port = 3000;
 
 app.listen(port, hostname, () => {
-  console.log(`Server is running on port ${port}`);
+  console.log(`Server is running on port http://${hostname}:${port}`);
 });
 
 module.exports = router;
