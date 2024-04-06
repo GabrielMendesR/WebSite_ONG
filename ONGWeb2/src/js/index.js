@@ -74,7 +74,7 @@ function listOngs() {
 }
 
 function getAllOngs() {
-  axios.get('http://152.67.41.48:3000/api/ong/')
+  axios.get('http://152.67.41.48:3000/api/ong/') //TESTE TESTE
     .then(response => {
       console.log('Response:', response.data);
       ong_list = response.data.data
