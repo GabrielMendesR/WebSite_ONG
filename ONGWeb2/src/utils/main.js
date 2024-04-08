@@ -49,7 +49,7 @@ app.get('/', (req, res) => {
     res.send('Aplicação rodando!\n');
 });
 
-app.post('http://152.67.41.48:3000/api/login', async (req, res) => {
+app.post('/api/login', async (req, res) => {
   const login = await database.checkLogin(req.body)
   if(!login || login.length == 0) {
     res.status(400);
