@@ -173,7 +173,7 @@ async function update() {
             console.log('Response:', response.data);
         })
         .catch(error => {
-          console.error('Error:', error);
+            fireErrorMessage(res.response.data.error)
         });
     }).catch(error => fireErrorMessage(error))
 }
