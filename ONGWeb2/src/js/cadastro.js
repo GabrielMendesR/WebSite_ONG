@@ -121,7 +121,6 @@ function fireErrorMessage(text) {
         text: text,
         showConfirmButton: false,
         timer: 1500,
-        backdrop: false,
         toast: true,
     });
 }

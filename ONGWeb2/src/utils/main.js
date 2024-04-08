@@ -101,7 +101,7 @@ app.get('/api/ong', async (req, res) => {
 app.put('/api/ong/update', upload.single('image'), async (req, res) => {
   const decoded = getTokenParams(req.headers);
   if (!decoded) {
-    return res.status(401).json({ message: 'Usuário não autenticado!' });
+    return res.status(401).json({ error: 'Usuário não autenticado!' });
   }
   const filePath = req.file.path.replace(/\\/g, '/');
   database.updateOng(decoded.uid, {...req.body, filePath})
@@ -112,7 +112,7 @@ app.put('/api/ong/update', upload.single('image'), async (req, res) => {
 app.delete('/api/ong/', async (req, res) => {
   const decoded = getTokenParams(req.headers);
   if (!decoded) {
-    return res.status(401).json({ message: 'Usuário não autenticado!' });
+    return res.status(401).json({ error: 'Usuário não autenticado!' });
   }
   const result = await database.deleteOng(decoded.uid, req)
   res.json({ message: `Deletada ONG de ID ${decoded.uid}`, result })

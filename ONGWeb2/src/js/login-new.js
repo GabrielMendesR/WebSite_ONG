@@ -33,7 +33,6 @@ function login(){
 
 function fireErrorMessage(text) {
   Swal.fire({
-    backdrop: false,
     position: "top-end",
     icon: "error",
     title: "",

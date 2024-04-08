@@ -87,7 +87,7 @@ function updateOng(id_ong, ong) {
     return new Promise(async (resolve, reject) => { 
 
         if (await ongAlreadyExists({...ong, id: id_ong})) {
-            reject('Já existe uma ONG com CPNJ ou Email informados!')
+            reject({ error: 'Já existe uma ONG com CPNJ ou Email informados!'})
             return
         }
 
