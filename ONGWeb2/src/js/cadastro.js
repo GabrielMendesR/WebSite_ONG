@@ -128,7 +128,6 @@ function fireErrorMessage(text) {
 
 function validateForm(form) {
     return new Promise((resolve, reject) => {
-        console.log(form)
         
         if (form.get('senha') !== form.get('confirmarSenha')) 
             reject('As senhas não coincidem!')
@@ -174,12 +173,11 @@ async function cadastrar() {
             }
         })
         .then(response => {
-          console.log('Response:', response.data);
+          //console.log('Response:', response.data);
           window.location.href = "http://ongweb.social/";
         })
         .catch(error => {
             fireErrorMessage(error.response.data)
-            console.error('Error:', error.response.data);
         });
     }).catch(error => fireErrorMessage(error.response.data))
 }
