@@ -71,7 +71,7 @@ function getOngImagesTest() {
       console.log('Response:', response.data);
     })
     .catch(error => {
-      console.error('Error:', error);
+      console.error('Error:', error.response.data);
     });
 }
 
@@ -94,7 +94,7 @@ function uploadImageTest() {
       console.log('Response:', response.data);
     })
     .catch(error => {
-      console.error('Error:', error);
+      console.error('Error:', error.response.data);
     });
 }
 
@@ -110,7 +110,7 @@ function getOngsTest() {
       console.log('Response:', response.data);
     })
     .catch(error => {
-      console.error('Error:', error);
+      console.error('Error:', error.response.data);
     });
 }
 
@@ -177,8 +177,8 @@ async function cadastrar() {
           console.log('Response:', response.data);
         })
         .catch(error => {
-            fireErrorMessage(error)
-            console.error('Error:', error);
+            fireErrorMessage(error.response.data)
+            console.error('Error:', error.response.data);
         });
-    }).catch(error => fireErrorMessage(error))
+    }).catch(error => fireErrorMessage(error.response.data))
 }
