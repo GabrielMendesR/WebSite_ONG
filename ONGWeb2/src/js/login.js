@@ -22,7 +22,7 @@ function login(){
   .then(response => {
     console.log('Response:', response.data);
     localStorage.setItem('token', response.data.token);
-    window.location.href = "/var/www/ongweb.social/WebSite_ONG/ONGWeb2/src/ui/";
+    window.location.href = "http://ongweb.social/";
   })
   .catch(error => {
     document.getElementById('fields-section').style.display = 'block'

@@ -115,7 +115,7 @@ function deleteOng() {
                     text: "Sua ONG foi removida do sistema.",
                     icon: "success",
                 }).then((result) => {
-                    window.location.href = "/ONGWeb2/src/ui/";
+                    window.location.href = "http://ongweb.social/";
                 })
             })
             .catch(error => {
