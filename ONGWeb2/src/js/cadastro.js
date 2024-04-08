@@ -175,8 +175,8 @@ async function cadastrar() {
           //console.log('Response:', response.data);
           window.location.href = "http://ongweb.social/";
         })
-        .catch(error => {
-            fireErrorMessage(error)
+        .catch(response => {
+            fireErrorMessage(response.error)
         });
     }).catch(error => fireErrorMessage(error))
 }
