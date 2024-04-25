@@ -143,17 +143,17 @@ function getAllImages() {
 
 function getOngById(ong_id) {
     return new Promise((resolve, reject) => {    
-        pool.query(`SELECT * FROM ong_list WHERE id = ${ong_id}`, (error, results, fields) => {
+        pool.query(`SELECT id, name, phone_number, email, description, code, url, main_image_url, address_state, address_street, address_number, address_city FROM ong_list WHERE id = ${ong_id}`, (error, results, fields) => {
             if (error) reject(error);
             resolve(results);
-        })
+        });
     })
 }
 
 
 function getAllOngs() {
     return new Promise((resolve, reject) => {     
-        pool.query('SELECT * FROM ong_list', (error, results, fields) => {
+        pool.query('SELECT id, name, phone_number, email, description, code, url, main_image_url, address_state, address_street, address_number, address_city FROM ong_list', (error, results, fields) => {
             if (error) reject(error);
             resolve(results);
         });
