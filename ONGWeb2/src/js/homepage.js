@@ -7,7 +7,7 @@ function getOngById() {
     const urlParams = new URLSearchParams(window.location.search);
     const ongId = urlParams.get('id');
 
-    axios.get('http://152.67.41.48:3000/api/ong/' + ongId)
+    axios.get('http://164.152.57.77:3000/api/ong/' + ongId)
     .then(response => {
         console.log('Response:', response.data);
         resolveOng(response.data[0])

@@ -11,7 +11,7 @@ function getOngById() {
     const urlParams = new URLSearchParams(window.location.search);
     const ongId = urlParams.get('id');
 
-    axios.get('http://152.67.41.48:3000/api/ong/' + ongId)
+    axios.get('http://164.152.57.77:3000/api/ong/' + ongId)
     .then(response => {
         console.log('Response:', response.data);
         resolveOng(response.data[0])
@@ -102,7 +102,7 @@ function deleteOng() {
       }).then((result) => {
         if (result.isConfirmed) {
             const token = localStorage.getItem('token');
-            axios.delete('http://152.67.41.48:3000/api/ong/', { 
+            axios.delete('http://164.152.57.77:3000/api/ong/', { 
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
@@ -163,7 +163,7 @@ async function update() {
     const token = localStorage.getItem('token');
     
     validateForm(formData).then(() => {
-        axios.put('http://152.67.41.48:3000/api/ong/update', formData, { 
+        axios.put('http://164.152.57.77:3000/api/ong/update', formData, { 
             headers: {
                 'Content-Type': 'multipart/form-data',
                 'Authorization': `Bearer ${token}`

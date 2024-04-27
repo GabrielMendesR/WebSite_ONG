@@ -11,7 +11,7 @@ const path = require('path');
 app.use(cors({origin: '*'}), express.json())
 
 const imagesDirectory = path.resolve(__dirname, '../../../uploads/'); //pasta das imagens
-app.use('/uploads', express.static(imagesDirectory)); //permite acessar pelo navegador, ex: http://152.67.41.48:3000/uploads/20240308_015019.jpg
+app.use('/uploads', express.static(imagesDirectory)); //permite acessar pelo navegador, ex: http://164.152.57.77:3000/uploads/20240308_015019.jpg
 
 app.use('/', router);
 
