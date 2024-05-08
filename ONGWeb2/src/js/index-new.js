@@ -72,3 +72,17 @@ function listOngs() {
     container.appendChild(div);
   });
 }
+
+function getAllOngs() {
+  axios.get('http://164.152.57.77:3000/api/ong/') //TESTE TESTE
+    .then(response => {
+      console.log('Response:', response.data);
+      ong_list = response.data.data
+      listOngs()
+      getProfileAvatar()
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+}
+
