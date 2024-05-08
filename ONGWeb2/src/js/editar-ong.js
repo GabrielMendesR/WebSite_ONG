@@ -170,7 +170,9 @@ async function update() {
             }
         })
         .then(response => {
-            console.log('Response:', response.data);
+            //console.log('Response:', response.data);
+            window.location.href = "http://ongweb.social/";
+
         })
         .catch(error => {
             fireErrorMessage(res.response.data.error)
