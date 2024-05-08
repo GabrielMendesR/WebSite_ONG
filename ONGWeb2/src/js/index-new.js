@@ -85,4 +85,3 @@ function getAllOngs() {
       console.error('Error:', error);
     });
 }
-
