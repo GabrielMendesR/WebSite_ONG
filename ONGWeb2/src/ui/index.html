@@ -199,29 +199,21 @@
 
                     </ul>
 
-                    <div class="footer-copyright">&copy; 2024, ONGWeb <p id="contador">0 Visitas ao Site</p>
+                    <div class="footer-copyright">&copy; 2024, ONGWeb</div>
+                    <!-- Inicio codigo Contador -->
+                    <div align="center"><a title="busca cep" href="https://buscacepcorreios.com.br/"><img
+                                src="https://contador-gratis.com/contadores-de-visitas/080524074412647.gif"
+                                alt="busca cep"></a>
+                        <div><a href="https://www.contador-gratis.com/" title="contador de visitas">Contador de
+                                Visitas</a></div>
                     </div>
+                    <!-- Fim do codigo Contador -->
 
                 </div>
             </div>
         </footer>
     </div>
-    <script>
-        function aumentarContador() {
-            if (localStorage.getItem('visitas')) {
-                let visitas = parseInt(localStorage.getItem('visitas'));
-                visitas++;
-                localStorage.setItem('visitas', visitas);
-            } else {
-                localStorage.setItem('visitas', 1);
-            }
 
-            document.getElementById('contador').textContent = localStorage.getItem('visitas') + ' Visitas ao Site';
-        }
-
-        window.onload = aumentarContador;
-
-    </script>
     <!-- <script src="./../../../../node_modules/axios/dist/axios.min.js"></script> -->
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="main.min.js"></script>
